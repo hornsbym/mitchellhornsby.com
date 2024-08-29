@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import { Sora, Quicksand } from "next/font/google";
 import "./globals.css";
+import NavDrawer from "./components/layouts/NavDrawer/NavDrawer";
 
-// Pull in public fonts from Google
 const sora = Sora(
   {
     variable: '--sora-font',
-    subsets: ['latin']
+    subsets: ['latin'],
   }
 );
 
 const quicksand = Quicksand(
   {
     variable: '--quicksand-font',
-    subsets: ['latin']
+    subsets: ['latin'],
   }
 );
 
@@ -30,13 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`
-        ${sora.className} 
-        ${quicksand.className}
-        bg-gradient-to-l 
-        from-background 
-        to-background 
-        via-background_gradient
-        `}>{children}</body>
+        ${sora.variable} 
+        ${quicksand.variable}
+      `}>
+        <NavDrawer>
+          {children}
+        </NavDrawer>
+      </body>
     </html>
   );
 }
