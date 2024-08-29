@@ -32,6 +32,7 @@ export default function RootLayout({
       <body className={`
         ${sora.variable} 
         ${quicksand.variable}
+        min-h-screen
       `}>
         <NavDrawer>
           {children}
