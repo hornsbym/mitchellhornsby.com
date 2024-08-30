@@ -2,10 +2,9 @@
 import { NavContext } from "@/app/contexts/navContext"
 import { useEffect, useState } from "react"
 import { NavSubMenu } from "./NavSubMenu"
-import { NavSubMenuLink } from "./NavSubMenuLink"
 import { NavLink } from "./NavLink"
 import Hamburger from "hamburger-react"
-import { RiDownloadFill } from "react-icons/ri"
+import { RiArrowRightLine, RiDownloadFill } from "react-icons/ri"
 
 type NavDrawerProps = {
     children: React.ReactNode
@@ -34,36 +33,32 @@ export default function NavDrawer({
     const transition = `transition-[left] duration-[350ms] ease-out`
 
     const [
-        positiveDrawerWidth,
         negativeDrawerWidth,
         width
     ] = (() => {
-        let pos, neg, width = ''
+        let neg, width = ''
 
         switch (drawerWidth) {
             case (25):
-                pos = 'sm:left-[25rem]'
                 neg = 'sm:left-[-25rem]'
                 width = 'sm:w-[25rem]'
                 break
             case (50):
-                pos = 'sm:left-[50rem]'
                 neg = 'sm:left-[-50rem]'
                 width = 'sm:w-[50rem]'
                 break
             case (75):
-                pos = 'sm:left-[75rem]'
                 neg = 'sm:left-[-75rem]'
                 width = 'sm:w-[75rem]'
                 break
             case (100):
                 break
         }
-        return [pos, neg, width]
+        return [neg, width]
     })()
 
     return (
-        <div className={`relative min-h-screen flex flex-col`}>
+        <div className={`relative min-h-screen flex flex-col overflow-x-hidden`}>
             <div className={`sticky top-0 bg-black w-full z-10 flex flex-row w-full justify-between px-4 items-center`}>
                 {/* Navbar (permanently fixed to the top of the screen) */}
                 <button
@@ -81,24 +76,25 @@ export default function NavDrawer({
                     <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Download</span>Resume<RiDownloadFill /></span>
                 </a>
             </div>
-            <div className="relative">
+            <div className="anchor relative h-screen">
                 <div className={`${navOpen ? 'left-0' : `${negativeDrawerWidth} left-[-100vw]`} ${transition} absolute flex flex-row w-fit`}>
                     {/* Navbar drawer */}
-                    <nav className={`${width} flex-1 h-full bg-black drop-shadow-xl`}>
+                    <nav className={`${width} w-[100vw] flex-1 h-full bg-black drop-shadow-xl`}>
                         <NavContext.Provider value={{
                             isNavOpen: navOpen,
                             setNavOpen: setNavOpen
                         }}>
-                            <ul className="flex flex-col flex-1 p-4">
+                            <ul className="flex flex-col flex-1 p-4 sticky gap-2 top-0">
                                 <NavLink
                                     label={<span className="text-white">Home</span>}
                                     href={`/`}
                                     classNames={{
+                                        container: 'border-white',
                                         labelContainer: '!bg-black'
                                     }}
                                 />
                                 <NavSubMenu
-                                    label={<span className="text-white">Projects</span>}
+                                    label={"Projects"}
                                 >
                                     <NavLink
                                         label={"Novel Concept Studio"}
@@ -123,12 +119,20 @@ export default function NavDrawer({
                                             label={"UDD Survey"}
                                             href={``}
                                         />
+                                        <a
+                                            href='/'
+                                            className="w-fit flex flex-row gap-1 items-center underline p-2 mt-2"
+                                            onClick={() => {setNavOpen(false)}}
+                                        >
+                                            View all projects <RiArrowRightLine />
+                                        </a>
                                     </NavSubMenu>
                                 </NavSubMenu>
                                 <NavLink
                                     label={<span className="text-white">Get in Touch</span>}
                                     href={`/`}
                                     classNames={{
+                                        container: 'border-white',
                                         labelContainer: '!bg-black'
                                     }}
                                 />
@@ -138,11 +142,10 @@ export default function NavDrawer({
                     <div className={`relative bg-white w-screen`}>
                         {/* Content and overlay */}
                         <div
-                            className={`${navOpen ? 'opacity-100 z-20' : 'opacity-0 z-[-10]'} absolute top-0 right-0 bottom-0 left-0 h-screen bg-black/40 `}
+                            className={`${navOpen ? 'opacity-100 z-20' : 'opacity-0 z-[-10]'} absolute top-0 right-0 bottom-0 left-0 bg-black/40 `}
                             onClick={() => setNavOpen(false)}
                         />
                         {children}
-
                     </div>
                 </div>
             </div>

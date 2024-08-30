@@ -25,7 +25,7 @@ export const NavLink = ({
     } = useContext(NavContext)
 
     return (
-        <li className={`relative z-10 group w-full mt-2 ${classNames?.container ?? ''}`}>
+        <li className={`relative z-10 group w-full border-l-2 border-black ${classNames?.container ?? ''}`}>
             <div className="absolute z-[-20] flex flex-col justify-center items-center top-0 left-0 bottom-0 right-0 w-8 bg-yellow-100">
                 <RiArrowRightLine />
             </div>
