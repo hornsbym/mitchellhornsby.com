@@ -33,6 +33,7 @@ export default function RootLayout({
         ${sora.variable} 
         ${quicksand.variable}
         min-h-screen
+        bg-black
       `}>
         <NavDrawer>
           {children}

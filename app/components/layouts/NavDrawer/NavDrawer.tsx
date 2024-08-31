@@ -76,73 +76,77 @@ export default function NavDrawer({
                     <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Download</span>Resume<RiDownloadFill /></span>
                 </a>
             </div>
-            <div className="anchor relative h-screen">
+            <div className="relative">
                 <div className={`${navOpen ? 'left-0' : `${negativeDrawerWidth} left-[-100vw]`} ${transition} absolute flex flex-row w-fit`}>
                     {/* Navbar drawer */}
-                    <nav className={`${width} w-[100vw] flex-1 h-full bg-black drop-shadow-xl`}>
-                        <NavContext.Provider value={{
-                            isNavOpen: navOpen,
-                            setNavOpen: setNavOpen
-                        }}>
-                            <ul className="flex flex-col flex-1 p-4 sticky gap-2 top-0">
-                                <NavLink
-                                    label={<span className="text-white">Home</span>}
-                                    href={`/`}
-                                    classNames={{
-                                        container: 'border-white',
-                                        labelContainer: '!bg-black'
-                                    }}
-                                />
-                                <NavSubMenu
-                                    label={"Projects"}
-                                >
+                    {/* <div className="FINDME bg-black"> */}
+                        <nav className={`${width} w-[100vw] flex-1 h-full bg-black drop-shadow-xl sticky top-[10%]`}>
+                            <NavContext.Provider value={{
+                                isNavOpen: navOpen,
+                                setNavOpen: setNavOpen
+                            }}>
+                                <ul className="flex flex-col flex-1 p-4 gap-2">
                                     <NavLink
-                                        label={"Novel Concept Studio"}
-                                        href={`/novel-concept-studio`}
+                                        label={<span className="text-white">Home</span>}
+                                        href={`/#home`}
+                                        classNames={{
+                                            container: 'border-white',
+                                            labelContainer: '!bg-black'
+                                        }}
                                     />
-                                    <NavSubMenu label='Nxu'>
+                                    <NavSubMenu
+                                        label={"Projects"}
+                                    >
                                         <NavLink
-                                            label={"Admin Panel"}
-                                            href={`nxu-admin-panel`}
+                                            label={"Novel Concept Studio"}
+                                            href={`/novel-concept-studio`}
                                         />
-                                        <NavLink
-                                            label={"Consumer App"}
-                                            href={``}
-                                        />
+                                        <NavSubMenu label='Nxu'>
+                                            <NavLink
+                                                label={"Admin Panel"}
+                                                href={`nxu-admin-panel`}
+                                            />
+                                            <NavLink
+                                                label={"Consumer App"}
+                                                href={``}
+                                            />
+                                        </NavSubMenu>
+                                        <NavSubMenu label='Mayo Clinic'>
+                                            <NavLink
+                                                label={"Patient Website"}
+                                                href={``}
+                                            />
+                                            <NavLink
+                                                label={"UDD Survey"}
+                                                href={``}
+                                            />
+                                            <a
+                                                href='/'
+                                                className="w-fit flex flex-row gap-1 items-center underline p-2 mt-2"
+                                                onClick={() => { setNavOpen(false) }}
+                                            >
+                                                View all projects <RiArrowRightLine />
+                                            </a>
+                                        </NavSubMenu>
                                     </NavSubMenu>
-                                    <NavSubMenu label='Mayo Clinic'>
-                                        <NavLink
-                                            label={"Patient Website"}
-                                            href={``}
-                                        />
-                                        <NavLink
-                                            label={"UDD Survey"}
-                                            href={``}
-                                        />
-                                        <a
-                                            href='/'
-                                            className="w-fit flex flex-row gap-1 items-center underline p-2 mt-2"
-                                            onClick={() => {setNavOpen(false)}}
-                                        >
-                                            View all projects <RiArrowRightLine />
-                                        </a>
-                                    </NavSubMenu>
-                                </NavSubMenu>
-                                <NavLink
-                                    label={<span className="text-white">Get in Touch</span>}
-                                    href={`/`}
-                                    classNames={{
-                                        container: 'border-white',
-                                        labelContainer: '!bg-black'
-                                    }}
-                                />
-                            </ul>
-                        </NavContext.Provider>
-                    </nav>
+                                    <NavLink
+                                        label={<span className="text-white">Get in Touch</span>}
+                                        href={`/#contact`}
+                                        classNames={{
+                                            container: 'border-white',
+                                            labelContainer: '!bg-black'
+                                        }}
+                                    />
+                                </ul>
+                            </NavContext.Provider>
+                        </nav>
+                    {/* </div> */}
+
+
                     <div className={`relative bg-white w-screen`}>
                         {/* Content and overlay */}
                         <div
-                            className={`${navOpen ? 'opacity-100 z-20' : 'opacity-0 z-[-10]'} absolute top-0 right-0 bottom-0 left-0 bg-black/40 `}
+                            className={`${navOpen ? 'opacity-100' : 'opacity-0 z-[-10]'} absolute top-0 right-0 bottom-0 left-0 bg-black/40 `}
                             onClick={() => setNavOpen(false)}
                         />
                         {children}

@@ -24,6 +24,7 @@ export default function Landing() {
     return (
         <section
             className="flex flex-col gap-4 items-center w-full aspect-square sm:aspect-[7/5] lg:aspect-[7/4] xl:aspect-[16/7] justify-center"
+            id="home"
         >
             <div
                 className="w-fit rounded-full border-black border-8"
