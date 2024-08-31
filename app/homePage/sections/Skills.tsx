@@ -1,4 +1,5 @@
 'use client'
+import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 import { useState } from "react";
 import { RiAddLine, RiSubtractLine } from "react-icons/ri";
 
@@ -89,34 +90,36 @@ export default function SkillsSection() {
     const [isSkillsExpanded, setExpandSkills] = useState(false)
 
     return (
-        <section
-            className=""
-        >
-            <h2 className={`text-2xl font-header`}>Technical Skills</h2>
-            <p></p>
-            <div className="flex flex-col items-center gap-4">
-                {
-                    isSkillsExpanded ? (
-                        <div className="flex flex-row justify-center gap-4 flex-wrap">
-                            {Skills.map((sk, i) => <SkillGauge key={`${sk.skill}-${i}`} {...sk} />)}
-                        </div>
-                    ) : (
-                        <div className="flex flex-row justify-center gap-4 flex-wrap">
-                            {Skills.map((sk, i) => i < 3 ? <SkillGauge key={`${sk.skill}-${i}`} {...sk} /> : null)}
-                        </div>
-                    )
-                }
-                <button
-                    onClick={() => { setExpandSkills(!isSkillsExpanded) }}
-                >
-                    {isSkillsExpanded ? (
-                        <span className="flex flex-row gap-2 items-center border border-black rounded-lg p-2">Show less<RiSubtractLine /></span>
-                    ) : (
-                        <span className="flex flex-row gap-2 items-center border border-black rounded-lg p-2">Show more <RiAddLine /></span>
-                    )}
-                </button>
-            </div>
+        <section>
+            <SectionContainer>
+                <div>
+                    <h2 className={`text-2xl font-header`}>Technical Skills</h2>
+                    <p></p>
+                    <div className="flex flex-col items-center gap-4">
+                        {
+                            isSkillsExpanded ? (
+                                <div className="flex flex-row justify-center gap-4 flex-wrap">
+                                    {Skills.map((sk, i) => <SkillGauge key={`${sk.skill}-${i}`} {...sk} />)}
+                                </div>
+                            ) : (
+                                <div className="flex flex-row justify-center gap-4 flex-wrap">
+                                    {Skills.map((sk, i) => i < 3 ? <SkillGauge key={`${sk.skill}-${i}`} {...sk} /> : null)}
+                                </div>
+                            )
+                        }
+                        <button
+                            onClick={() => { setExpandSkills(!isSkillsExpanded) }}
+                        >
+                            {isSkillsExpanded ? (
+                                <span className="flex flex-row gap-2 items-center border border-black rounded-lg p-2">Show less<RiSubtractLine /></span>
+                            ) : (
+                                <span className="flex flex-row gap-2 items-center border border-black rounded-lg p-2">Show more <RiAddLine /></span>
+                            )}
+                        </button>
+                    </div>
+                </div>
 
+            </SectionContainer>
         </section>
     );
 }
@@ -152,7 +155,7 @@ const SkillGauge = ({
             </div>
             <div className="flex flex-col gap-2">
                 <div className="flex flex-row gap-4 justify-between items-center"><p>Experience:</p><SkillGaugeIndicators level={experienceLevel} /></div>
-                <div className="flex flex-row gap-4 justify-between items-center"><p>Interest:</p><SkillGaugeIndicators level={interestLevel} /></div>
+                {/* <div className="flex flex-row gap-4 justify-between items-center"><p>Interest:</p><SkillGaugeIndicators level={interestLevel} /></div> */}
             </div>
         </div>
     )
@@ -185,6 +188,8 @@ const SkillGaugeIndicators = ({ level }: SkillGaugeIndicatorsProps) => {
 
 const SkillGaugeIndicator = ({ lighted }: { lighted: boolean }) => {
     return (
-        <div className={`${lighted ? 'bg-green-600' : 'bg-green-800 opacity-80'} w-8 h-2 sm:w-16 sm:h-4 rounded-lg`} />
+        <div className={`${lighted ? 'bg-green-600' : 'bg-green-800 opacity-80'} relative w-8 h-4 sm:w-16 sm:h-6 rounded-xl`}>
+            <div className={`absolute w-2 h-1 ${lighted ? 'bg-white/30' : 'bg-white/60'} top-[3px] sm:top-[5px] left-[4px] sm:left-[8px] border-white rounded-[100%]`}></div>
+        </div>
     )
 }

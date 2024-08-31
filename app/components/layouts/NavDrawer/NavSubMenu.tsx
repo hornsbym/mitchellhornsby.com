@@ -12,9 +12,9 @@ export const NavSubMenu = ({
     return (
         <li className={`flex flex-col w-full`}>
             {/* https://stackoverflow.com/a/35019847 */}
-            <figure className={`${color} py-2 px-8`}>
+            <figure className={`${color} p-2`}>
                 <figcaption className={`italic pb-1`}>{label}</figcaption>
-                <ul className={`flex flex-col gap-1`}>
+                <ul className={`flex flex-col gap-1 py-2 px-8`}>
                     {children}
                 </ul>
             </figure>

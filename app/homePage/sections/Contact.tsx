@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useState } from "react";
 import { RiLoader5Fill } from "react-icons/ri";
+import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
@@ -46,55 +47,65 @@ export default function Contact() {
 
     return (
         <section
-            className="flex flex-col gap-4 items-center w-full aspect-square sm:aspect-[7/5] lg:aspect-[7/4] xl:aspect-[16/7] justify-center"
+            className={`
+                flex
+                flex-col
+                gap-4
+                items-center
+                w-full
+                justify-center
+            `}
             id="contact"
         >
-            <h2 className="text-3xl h-[5rem] font-body text-center w-3/4 sm:w-1/2 lg:w-1/4">Say hello!</h2>
-
-            <div className={`bg-gray-300 p-4`}>
-                {formRes && formRes.ok ? (<div>
-                    {`Thanks, I've got your message! I'll contact you shortly.`}
-                </div>) : (
-                    <form
-                        className="flex flex-col gap-4"
-                        onSubmit={handleSubmit(onSubmit)}
-                    >
-                        <div className="flex flex-col">
-                            <label htmlFor="fullName">Full Name</label>
-                            <input type="text" id="fullName" {...register("fullName", { required: true })} />
-                            <p className="text-red-500 italic">{errors.fullName ? errors.fullName.message : ''}</p>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <div className="flex flex-1 flex-col">
-                                <label htmlFor="email">Email address</label>
-                                <input type="email" id="email" {...register("email", { required: true })} />
-                                <p className="text-red-500 italic">{errors.email ? errors.email.message : ''}</p>
-                            </div>
-                            <div className="flex flex-1 flex-col">
-                                <label htmlFor="phone_number">Phone Number</label>
-                                <input type="tel" id="phone_number" {...register("phone_number", { required: true })} />
-                                <p className="text-red-500 italic">{errors.phone_number ? errors.phone_number.message : ''}</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="message">Message</label>
-                            <textarea id="message" {...register("message", { required: true })} />
-                            <p className="text-red-500 italic">{errors.message ? errors.message.message : ''}</p>
-                        </div>
-                        <button
-                            type="submit"
-                            className="flex flex-row items-center justify-center p-2 bg-white"
+            <SectionContainer className={{
+                inner: `bg-gray-300 p-4`,
+            }}>
+                <h2 className="text-3xl h-[5rem] font-header">Say Hello!</h2>
+                <div className={`flex flex-col w-5/6 md:w-3/4 self-center`}>
+                    {formRes && formRes.ok ? (<div>
+                        {`Thanks, I've got your message! I'll contact you shortly.`}
+                    </div>) : (
+                        <form
+                            className="flex flex-1 flex-col gap-4"
+                            onSubmit={handleSubmit(onSubmit)}
                         >
-                            {!isSubmitting ? "Send Message" : <RiLoader5Fill className="text-xl animate-spin" />}
-                        </button>
-                        {(formRes && !formRes.ok) ? (
-                            <p className="text-red-500 italic">{`Sorry, something went wrong. Try again in a little while.`}</p>
-                        ) : (
-                            <p></p>
-                        )}
-                    </form>
-                )}
-            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="fullName">Full Name</label>
+                                <input type="text" id="fullName" {...register("fullName", { required: true })} />
+                                <p className="text-red-500 italic">{errors.fullName ? errors.fullName.message : ''}</p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <div className="flex flex-1 flex-col">
+                                    <label htmlFor="email">Email address</label>
+                                    <input type="email" id="email" {...register("email", { required: true })} />
+                                    <p className="text-red-500 italic">{errors.email ? errors.email.message : ''}</p>
+                                </div>
+                                <div className="flex flex-1 flex-col">
+                                    <label htmlFor="phone_number">Phone Number</label>
+                                    <input type="tel" id="phone_number" {...register("phone_number", { required: true })} />
+                                    <p className="text-red-500 italic">{errors.phone_number ? errors.phone_number.message : ''}</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="message">Message</label>
+                                <textarea id="message" {...register("message", { required: true })} />
+                                <p className="text-red-500 italic">{errors.message ? errors.message.message : ''}</p>
+                            </div>
+                            <button
+                                type="submit"
+                                className="flex flex-row items-center justify-center p-2 bg-white"
+                            >
+                                {!isSubmitting ? "Send Message" : <RiLoader5Fill className="text-xl animate-spin" />}
+                            </button>
+                            {(formRes && !formRes.ok) ? (
+                                <p className="text-red-500 italic">{`Sorry, something went wrong. Try again in a little while.`}</p>
+                            ) : (
+                                <p></p>
+                            )}
+                        </form>
+                    )}
+                </div>
+            </SectionContainer>
         </section>
     );
 }
