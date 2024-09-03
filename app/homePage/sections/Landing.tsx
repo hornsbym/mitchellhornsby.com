@@ -14,20 +14,18 @@ export default function Landing() {
             'a software engineer',
             'based in northern California',
             'originally from Georgia',
+            'looking for work!',
             'a former college athlete',
-            'learning how to ski',
-            'raising two golden retrievers',
-            'interested in working with you :)'
         ]
     }
 
     return (
         <section
-            className="flex flex-col gap-4 items-center w-full aspect-square sm:aspect-[7/5] lg:aspect-[7/4] xl:aspect-[16/7] justify-center"
+            className="flex flex-col gap-8 items-center w-full aspect-[5/6] sm:aspect-[7/6] lg:aspect-[7/4] xl:aspect-[16/7] justify-center"
             id="home"
         >
             <div
-                className="w-fit rounded-full border-black border-8"
+                className="w-fit rounded-full border-black dark:border-white border-8 drop-shadow-light dark:drop-shadow-dark"
             >
                 <Image
                     src={profile_pic}
@@ -35,7 +33,7 @@ export default function Landing() {
                     className="rounded-full aspect-square object-cover"
                 />
             </div>
-            <h1 className="text-3xl h-[5rem] font-body text-center w-3/4 sm:w-1/2 lg:w-1/4">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
+            <h1 className="dm-text text-3xl h-[5rem] font-body text-center w-3/4 sm:w-1/2 lg:w-1/4">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
         </section>
     );
 }

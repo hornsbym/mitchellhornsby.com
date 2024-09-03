@@ -90,11 +90,10 @@ export default function SkillsSection() {
     const [isSkillsExpanded, setExpandSkills] = useState(false)
 
     return (
-        <section>
+        <section id="skills" className="pt-32">
             <SectionContainer>
-                <div>
+                <div className="dm-text flex flex-col gap-8">
                     <h2 className={`text-2xl font-header`}>Technical Skills</h2>
-                    <p></p>
                     <div className="flex flex-col items-center gap-4">
                         {
                             isSkillsExpanded ? (
@@ -111,9 +110,9 @@ export default function SkillsSection() {
                             onClick={() => { setExpandSkills(!isSkillsExpanded) }}
                         >
                             {isSkillsExpanded ? (
-                                <span className="flex flex-row gap-2 items-center border border-black rounded-lg p-2">Show less<RiSubtractLine /></span>
+                                <a href='#skills'><span className="flex flex-row gap-2 items-center border border-black dark:border-white rounded-lg py-2 px-4">Show less<RiSubtractLine /></span></a>
                             ) : (
-                                <span className="flex flex-row gap-2 items-center border border-black rounded-lg p-2">Show more <RiAddLine /></span>
+                                <span className="flex flex-row gap-2 items-center border border-black dark:border-white rounded-lg py-2 px-4">Show more <RiAddLine /></span>
                             )}
                         </button>
                     </div>
@@ -144,7 +143,7 @@ const SkillGauge = ({
 
 }: SkillGaugeProps) => {
     return (
-        <div className={`flex flex-col justify-between p-4 bg-black rounded-md w-fit text-white gap-4`}>
+        <div className={`flex flex-col justify-between p-4 bg-sky-900 dark:bg-white rounded-md w-fit dm-text-inverse gap-4 drop-shadow-light dark:drop-shadow-dark`}>
             <div className="flex flex-col sm:flex-row justify-between">
                 <h3 className="flex flex-1 font-heading text-xl">{skill}</h3>
                 <span className="flex flex-1 flex-col">
@@ -155,7 +154,6 @@ const SkillGauge = ({
             </div>
             <div className="flex flex-col gap-2">
                 <div className="flex flex-row gap-4 justify-between items-center"><p>Experience:</p><SkillGaugeIndicators level={experienceLevel} /></div>
-                {/* <div className="flex flex-row gap-4 justify-between items-center"><p>Interest:</p><SkillGaugeIndicators level={interestLevel} /></div> */}
             </div>
         </div>
     )
@@ -188,7 +186,7 @@ const SkillGaugeIndicators = ({ level }: SkillGaugeIndicatorsProps) => {
 
 const SkillGaugeIndicator = ({ lighted }: { lighted: boolean }) => {
     return (
-        <div className={`${lighted ? 'bg-green-600' : 'bg-green-800 opacity-80'} relative w-8 h-4 sm:w-16 sm:h-6 rounded-xl`}>
+        <div className={`${lighted ? 'bg-yellow-400' : 'bg-yellow-700 opacity-80'} relative w-8 h-4 sm:w-16 sm:h-6 rounded-xl z-auto`}>
             <div className={`absolute w-2 h-1 ${lighted ? 'bg-white/30' : 'bg-white/60'} top-[3px] sm:top-[5px] left-[4px] sm:left-[8px] border-white rounded-[100%]`}></div>
         </div>
     )

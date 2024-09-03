@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'selector',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -21,6 +22,10 @@ const config: Config = {
         background: "#111827",
         background_gradient: "#1a2431",
         overlay: 'rgba(39, 39, 42, .6)'
+      },
+      dropShadow: {
+        dark: `4px 4px 8px rgba(250, 204, 21, .3)`,
+        light: `4px 4px 8px rgba(12, 74, 110, .50)`
       },
       fontFamily: {
         header: ['var(--sora-font)'],

@@ -5,7 +5,16 @@
 @layer base {
     *,
     html {
-
         scroll-behavior: smooth !important;
+    }
+}
+
+@layer components {
+    .dm-text {
+        @apply text-black dark:text-white;
+    }
+
+    .dm-text-inverse {
+        @apply text-white dark:text-black;
     }
 }

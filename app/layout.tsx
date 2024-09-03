@@ -28,12 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className=''>
       <body className={`
         ${sora.variable} 
         ${quicksand.variable}
         min-h-screen
-        bg-black
       `}>
         <NavDrawer>
           {children}

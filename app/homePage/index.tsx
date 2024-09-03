@@ -7,12 +7,9 @@ export default function HomePage() {
     return (
         <>
             <Landing />
-            <div className={`flex flex-col gap-32`}>
-                <SkillsSection />
-                <CareerTimeline />
-                <Contact />
-            </div>
-
+            <SkillsSection />
+            <CareerTimeline />
+            <Contact />
         </>
     );
 }

@@ -54,11 +54,13 @@ export default function Contact() {
                 items-center
                 w-full
                 justify-center
+                pt-32
+                pb-16
             `}
             id="contact"
         >
             <SectionContainer className={{
-                inner: `bg-gray-300 p-4`,
+                inner: `bg-sky-200 p-4 rounded-lg drop-shadow-light dark:drop-shadow-dark`,
             }}>
                 <h2 className="text-3xl h-[5rem] font-header">Say Hello!</h2>
                 <div className={`flex flex-col w-5/6 md:w-3/4 self-center`}>
@@ -66,34 +68,34 @@ export default function Contact() {
                         {`Thanks, I've got your message! I'll contact you shortly.`}
                     </div>) : (
                         <form
-                            className="flex flex-1 flex-col gap-4"
+                            className="flex flex-1 flex-col gap-6"
                             onSubmit={handleSubmit(onSubmit)}
                         >
                             <div className="flex flex-col">
                                 <label htmlFor="fullName">Full Name</label>
-                                <input type="text" id="fullName" {...register("fullName", { required: true })} />
+                                <input type="text" id="fullName" className="rounded-lg p-2" {...register("fullName", { required: true })} />
                                 <p className="text-red-500 italic">{errors.fullName ? errors.fullName.message : ''}</p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <div className="flex flex-1 flex-col">
                                     <label htmlFor="email">Email address</label>
-                                    <input type="email" id="email" {...register("email", { required: true })} />
+                                    <input type="email" id="email" className="rounded-lg p-2" {...register("email", { required: true })} />
                                     <p className="text-red-500 italic">{errors.email ? errors.email.message : ''}</p>
                                 </div>
                                 <div className="flex flex-1 flex-col">
                                     <label htmlFor="phone_number">Phone Number</label>
-                                    <input type="tel" id="phone_number" {...register("phone_number", { required: true })} />
+                                    <input type="tel" id="phone_number" className="rounded-lg p-2" {...register("phone_number", { required: true })} />
                                     <p className="text-red-500 italic">{errors.phone_number ? errors.phone_number.message : ''}</p>
                                 </div>
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="message">Message</label>
-                                <textarea id="message" {...register("message", { required: true })} />
+                                <textarea id="message" className="rounded-lg p-2" {...register("message", { required: true })} />
                                 <p className="text-red-500 italic">{errors.message ? errors.message.message : ''}</p>
                             </div>
                             <button
                                 type="submit"
-                                className="flex flex-row items-center justify-center p-2 bg-white"
+                                className="flex flex-row items-center justify-center p-2 bg-yellow-400 w-1/2 self-center rounded-lg"
                             >
                                 {!isSubmitting ? "Send Message" : <RiLoader5Fill className="text-xl animate-spin" />}
                             </button>

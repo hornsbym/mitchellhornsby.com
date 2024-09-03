@@ -1,21 +1,21 @@
 'use client'
 import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 import { MONTHS } from "@/constants/months";
+import React from "react";
 import { useState } from "react";
-import { RiArrowUpLine, RiArrowUpWideFill, RiArticleFill, RiArticleLine } from "react-icons/ri";
-
-
+import { RiArrowUpLine, RiArticleLine } from "react-icons/ri";
 
 export default function CareerTimeline() {
     return (
-        <section>
+        <section className="pt-32">
             <SectionContainer>
-                <h2 className={`text-2xl font-header`}>Career Milestones</h2>
-                <p></p>
-                <div className="flex flex-col w-full">
-                    <Timeline
-                        stops={TimelineItems}
-                    />
+                <div className={`flex flex-col gap-8 dm-text`}>
+                    <h2 className={`text-2xl font-header`}>Career Milestones</h2>
+                    <div className="flex flex-col w-full">
+                        <Timeline
+                            stops={TimelineItems}
+                        />
+                    </div>
                 </div>
             </SectionContainer>
         </section>
@@ -43,14 +43,14 @@ const Timeline = ({
 }: TimelineProps) => {
     return (
         <div className={`flex flex-col items-start w-full gap-[2px] px-2 sm:px-8 lg:px-16`}>
-            <div className="border-l-2 border-black h-8 ml-[31px]"></div>
+            <div className="border-l-2 border-black dark:border-white h-8 ml-[31px]"></div>
             {stops.map((s, i) => {
-                return (<>
-                    <TimelineStop key={`${s.title}-${i}`} {...s} />
-                    {(i + 1 !== stops.length) && (<div className="border-l-2 border-black h-8 ml-[31px]"></div>)}
-                </>)
+                return (<React.Fragment key={`${s.title}-${i}`}>
+                    <TimelineStop {...s} />
+                    {(i + 1 !== stops.length) && (<div className="border-l-2 border-black dark:border-white h-8 ml-[31px]"></div>)}
+                </React.Fragment>)
             })}
-            <div className="border-l-2 border-black h-8 ml-[31px]"></div>
+            <div className="border-l-2 border-black dark:border-white h-8 ml-[31px]"></div>
         </div>
     )
 }
@@ -76,22 +76,22 @@ const TimelineStop = ({
 }: TimelineStopProps) => {
     const [isExpanded, setIsExpanded] = useState(false)
     return (
-        <div className={`${color} px-4 rounded-xl flex flex-row gap-4 w-full justify-center text-white`}>
+        <div className={`${color} px-4 rounded-xl flex flex-row gap-4 w-full justify-center dm-text-inverse drop-shadow-light dark:drop-shadow-dark `}>
             <div className="flex flex-col md:flex-1">
                 <div className={`flex flex-col ${!date.end && 'h-full'}`}>
-                    <div className="flex h-4 md:h-8 border-l-2 border-white ml-[15px]" />
+                    <div className="flex h-4 md:h-8 border-l-2 border-white dark:border-black ml-[15px]" />
                     <div className="flex flex-row gap-4 my-auto items-center">
                         {icon}<p className="hidden md:flex">{`${MONTHS[date.begin.getMonth()]}, ${date.begin.getFullYear()}`}</p>
                     </div>
-                    {!date.end && <div className="flex flex-1 min-h-4 h-full border-l-2 border-white ml-[15px]" />}
+                    {!date.end && <div className="flex flex-1 min-h-4 h-full border-l-2 border-white dark:border-black ml-[15px]" />}
                 </div>
                 {
                     date.end && (<>
-                        <div className="flex flex-1 min-h-4 border-l-2 border-white ml-[15px]" />
+                        <div className="flex flex-1 min-h-4 border-l-2 border-white dark:border-black ml-[15px]" />
                         <div className="flex flex-row gap-4 items-center">
                             {icon}<p className="hidden md:flex">{`${MONTHS[date.end.getMonth()]}, ${date.end.getFullYear()}`}</p>
                         </div>
-                        <div className="flex flex h-4 border-l-2 border-white ml-[15px]" />
+                        <div className="flex flex h-4 border-l-2 border-white dark:border-black ml-[15px]" />
                     </>)
                 }
             </div>
@@ -125,8 +125,8 @@ const TimelineStop = ({
 
 const TimelineItems = [
     {
-        icon: <TimelineStopIcon color='bg-white' />,
-        color: 'bg-black',
+        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2018, 5, 1),
             end: new Date(2018, 8, 1),
@@ -155,8 +155,8 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-white" />,
-        color: 'bg-black',
+        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2019, 4, 1),
         },
@@ -178,8 +178,8 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-white" />,
-        color: 'bg-black',
+        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2019, 5, 1),
             end: new Date(2023, 4, 1),
@@ -216,8 +216,8 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-white" />,
-        color: 'bg-black',
+        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2023, 4, 1),
             end: new Date(2024, 4, 1),
@@ -281,8 +281,8 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-white" />,
-        color: 'bg-black',
+        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2024, 5, 1),
         },
