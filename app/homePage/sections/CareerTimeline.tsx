@@ -3,7 +3,7 @@ import SectionContainer from "@/app/components/layouts/SectionContainer/SectionC
 import { MONTHS } from "@/constants/months";
 import React from "react";
 import { useState } from "react";
-import { RiArrowUpLine, RiArticleLine } from "react-icons/ri";
+import { RiArrowUpLine, RiArticleLine, RiCalendarCheckFill, RiCalendarEventFill, RiCalendarScheduleLine, RiCheckFill, RiFlag2Fill, RiFlagFill, RiFlagLine, RiPinyinInput, RiPushpin2Fill, RiPushpin2Line } from "react-icons/ri";
 
 export default function CareerTimeline() {
     return (
@@ -24,13 +24,17 @@ export default function CareerTimeline() {
 
 type TimelineStopIconProps = {
     color: string
+    icon?: React.ReactNode
 }
 
 const TimelineStopIcon = ({
-    color
+    color,
+    icon
 }: TimelineStopIconProps) => {
     return (
-        <div className={`${color} flex-none w-8 aspect-square rounded-full`} />
+        <div className={`${color} flex flex-row flex-none justify-center items-center w-8 aspect-square rounded-full`}>
+            {icon ? icon : ''}
+        </div>
     )
 }
 
@@ -41,16 +45,47 @@ type TimelineProps = {
 const Timeline = ({
     stops
 }: TimelineProps) => {
+    const sortedStops = stops.sort((stopA, stopB) => {
+        if (stopA.date.begin > stopB.date.begin) return -1
+        else if (stopA.date.begin < stopB.date.begin) return 1
+        else return 0
+    })
     return (
         <div className={`flex flex-col items-start w-full gap-[2px] px-2 sm:px-8 lg:px-16`}>
-            <div className="border-l-2 border-black dark:border-white h-8 ml-[31px]"></div>
-            {stops.map((s, i) => {
+            {/* Today's date */}
+            <div className="flex flex-row items-center gap-2 ml-[8px]">
+                <TimelineStopIcon
+                    color={"bg-black dark:bg-white !w-12"}
+                    icon={<RiCalendarCheckFill
+                        className="text-2xl dm-text-inverse"
+                    />}
+                />
+                <p>{`${MONTHS[(new Date()).getMonth()]}, ${(new Date()).getFullYear()}`}</p>
+            </div>
+            <TimelineSpacer className="flex-none h-24 !border-black dark:!border-white !ml-[31px]" />
+
+            {/* Timeline content */}
+            {sortedStops.map((s, i) => {
                 return (<React.Fragment key={`${s.title}-${i}`}>
                     <TimelineStop {...s} />
-                    {(i + 1 !== stops.length) && (<div className="border-l-2 border-black dark:border-white h-8 ml-[31px]"></div>)}
+                    {(i + 1 !== stops.length) && (
+                        <TimelineSpacer className="flex-none !border-black dark:!border-white h-16 !ml-[31px]" />
+                    )}
                 </React.Fragment>)
             })}
-            <div className="border-l-2 border-black dark:border-white h-8 ml-[31px]"></div>
+
+
+            {/* Start date */}
+            <TimelineSpacer className="flex-none h-24 !border-black dark:!border-white !ml-[31px]" />
+            <div className="flex flex-row gap-2 ml-[8px] items-center">
+                <TimelineStopIcon
+                    color={"bg-black dark:bg-white !w-12"}
+                    icon={<RiCalendarEventFill
+                        className="text-2xl dm-text-inverse"
+                    />}
+                />
+                <p>{`July, 2018`}</p>
+            </div>
         </div>
     )
 }
@@ -78,21 +113,27 @@ const TimelineStop = ({
     return (
         <div className={`${color} px-4 rounded-xl flex flex-row gap-4 w-full justify-center dm-text-inverse drop-shadow-light dark:drop-shadow-dark `}>
             <div className="flex flex-col md:flex-1">
-                <div className={`flex flex-col ${!date.end && 'h-full'}`}>
-                    <div className="flex h-4 md:h-8 border-l-2 border-white dark:border-black ml-[15px]" />
-                    <div className="flex flex-row gap-4 my-auto items-center">
-                        {icon}<p className="hidden md:flex">{`${MONTHS[date.begin.getMonth()]}, ${date.begin.getFullYear()}`}</p>
-                    </div>
-                    {!date.end && <div className="flex flex-1 min-h-4 h-full border-l-2 border-white dark:border-black ml-[15px]" />}
-                </div>
+                {/* Top spacer */}
+                <TimelineSpacer className="flex-none h-6" />
                 {
-                    date.end && (<>
-                        <div className="flex flex-1 min-h-4 border-l-2 border-white dark:border-black ml-[15px]" />
-                        <div className="flex flex-row gap-4 items-center">
-                            {icon}<p className="hidden md:flex">{`${MONTHS[date.end.getMonth()]}, ${date.end.getFullYear()}`}</p>
-                        </div>
-                        <div className="flex flex h-4 border-l-2 border-white dark:border-black ml-[15px]" />
-                    </>)
+                    date.end && (
+                        <>
+                            {/* End date icon */}
+                            <div className="flex flex-row gap-4 items-center">
+                                {icon}<p className="hidden md:flex">{`${MONTHS[date.end.getMonth()]}, ${date.end.getFullYear()}`}</p>
+                            </div>
+                            {/* Middle spacer */}
+                            <TimelineSpacer />
+                        </>
+                    )
+                }
+                {/* Start date icon */}
+                <div className="flex flex-row gap-4 items-center">
+                    {icon}<p className="hidden md:flex">{`${MONTHS[date.begin.getMonth()]}, ${date.begin.getFullYear()}`}</p>
+                </div>
+                {/* Bottom spacer */}
+                {
+                    !date.end ? (<TimelineSpacer />) : (<TimelineSpacer className="flex-none h-6" />)
                 }
             </div>
             <div className={`flex flex-col md:flex-[3] gap-4 w-full py-1 p-2`}>
@@ -123,9 +164,16 @@ const TimelineStop = ({
     )
 }
 
+const TimelineSpacer = ({ className }: { className?: string }) => {
+    return (<div className={`flex flex-1 min-h-4 border-l-2 border-white dark:border-black ml-[15px] ${className ?? ''}`} />
+    )
+}
+
 const TimelineItems = [
     {
-        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        icon: <TimelineStopIcon color="bg-yellow-400"
+            icon={<RiPushpin2Fill className="text-black text-xl" />}
+        />,
         color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2018, 5, 1),
@@ -155,7 +203,9 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        icon: <TimelineStopIcon color="bg-yellow-400"
+            icon={<RiPushpin2Fill className="text-black text-xl" />}
+        />,
         color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2019, 4, 1),
@@ -178,7 +228,9 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        icon: <TimelineStopIcon color="bg-yellow-400"
+            icon={<RiPushpin2Fill className="text-black text-xl" />}
+        />,
         color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2019, 5, 1),
@@ -216,7 +268,10 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        icon: <TimelineStopIcon
+            color="bg-yellow-400"
+            icon={<RiPushpin2Fill className="text-black text-xl" />}
+        />,
         color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2023, 4, 1),
@@ -236,7 +291,7 @@ const TimelineItems = [
                 {`Nxu was a late-stage electric vehicle charging startup. When I first joined, Nxu had two projects they were pursuing: battery pack manufacturing and fast EV charging stations.`}
             </p>
             <p>
-                {`I was placed on the charging station team. I had three areas of responsibility: developing the charging station admin panel (NextJS/Postgres), writing microservices to facilitate starting and stopping charging sessions (AWS Lambda/IoT), and updating the marketing website (React/Builder.io).`}
+                {`I was placed on the charging station team. I had three areas of responsibility: developing the charging station admin panel (NextJS/PostgreSQL), writing microservices to facilitate starting and stopping charging sessions (AWS Lambda/IoT), and updating the marketing website (React/Builder.io).`}
             </p>
             <p>
                 {`Within my first few months, the charging team successfully put together a charging station prototype. After thorough testing, we opened up the charging station team to the public and began generating revenue from the prototype as part of a limited alpha release.`}
@@ -265,7 +320,7 @@ const TimelineItems = [
                 <li>
                     <a
                         className={`underline`}
-                        href={`https://charging.nxuenergy.com/`}>{`NxuOne consumer web pp`}</a>{``}
+                        href={`https://charging.nxuenergy.com/`}>{`NxuOne consumer web app`}</a>{``}
                 </li>
                 <li>
                     <a
@@ -281,7 +336,9 @@ const TimelineItems = [
         </div>
     },
     {
-        icon: <TimelineStopIcon color="bg-yellow-400" />,
+        icon: <TimelineStopIcon color="bg-yellow-400"
+            icon={<RiPushpin2Fill className="text-black text-xl" />}
+        />,
         color: 'dark:bg-white bg-sky-900',
         date: {
             begin: new Date(2024, 5, 1),

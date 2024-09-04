@@ -16,12 +16,13 @@ export default function Landing() {
             'originally from Georgia',
             'looking for work!',
             'a former college athlete',
+            'probably either hiking or skiing'
         ]
     }
 
     return (
         <section
-            className="flex flex-col gap-8 items-center w-full aspect-[5/6] sm:aspect-[7/6] lg:aspect-[7/4] xl:aspect-[16/7] justify-center"
+            className="relative flex flex-col justify-center pt-16 gap-8 items-center w-full aspect-[7/6] md:aspect-[7/4] lg:aspect-[7/3] xl:aspect-[16/5]"
             id="home"
         >
             <div
@@ -31,6 +32,7 @@ export default function Landing() {
                     src={profile_pic}
                     alt="Portrait of Mitchell Hornsby standing in front of a snowy landscape at Yosemite National Park."
                     className="rounded-full aspect-square object-cover"
+                    priority
                 />
             </div>
             <h1 className="dm-text text-3xl h-[5rem] font-body text-center w-3/4 sm:w-1/2 lg:w-1/4">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>

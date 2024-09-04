@@ -2,12 +2,14 @@ type ToggleProps = {
     toggled?: boolean
     onToggle: () => void
     size?: 'small' | 'medium' | 'large'
+    label?: React.ReactNode
 }
 
 export default function Toggle({
     toggled = false,
     onToggle,
-    size = 'medium'
+    size = 'medium',
+    label
 }: ToggleProps) {
     const {
         container,
@@ -36,45 +38,51 @@ export default function Toggle({
     })()
 
     return (
+
         <button
-            className={`
-                relative
-                flex
-                flex-row
-                items-center
-                rounded-full
-                bg-white
-                ${container}
-            `}
+            className="flex flex-row gap-2 items-center"
             onClick={onToggle}
         >
-            <div className={`
-                ${toggle}
-                transition-[left_translate]
-                duration-350
-                ease-out
-                aspect-square
-                rounded-full
-                absolute
-                p-[2px]
-                bg-black
-                ${toggled
-                    ? 'left-0 translate-x-[0%] mx-2'
-                    : 'left-[100%] translate-x-[-100%] -mx-2'}`
-            }
+            <div
+                className={`
+                    relative
+                    flex
+                    flex-row
+                    gap-2
+                    items-center
+                    rounded-full
+                    bg-white
+                    ${container}
+                `}
             >
-                <div
-                    className={`
-                        transition-colors
-                        w-full
-                        h-full
+                <div className={`
+                        ${toggle}
+                        absolute
+                        transition-[left_translate]
+                        duration-350
+                        ease-out
+                        aspect-square
                         rounded-full
+                        p-[2px]
+                        bg-black
                         ${toggled
-                            ? 'bg-black'
+                        ? 'left-0 translate-x-[0%] mx-2'
+                        : 'left-[100%] translate-x-[-100%] -mx-2'}`
+                }>
+                    <div
+                        className={`
+                            transition-colors
+                            w-full
+                            h-full
+                            rounded-full
+                            ${toggled
+                            ? 'bg-zinc-600'
                             : 'bg-sky-200'}
-            `}>
+                            `}>
+                    </div>
                 </div>
             </div>
+            {label}
         </button>
     )
 } 

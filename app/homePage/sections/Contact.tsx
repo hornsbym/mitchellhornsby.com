@@ -95,7 +95,7 @@ export default function Contact() {
                             </div>
                             <button
                                 type="submit"
-                                className="flex flex-row items-center justify-center p-2 bg-yellow-400 w-1/2 self-center rounded-lg"
+                                className="flex flex-row items-center justify-center py-2 px-6 bg-yellow-400 w-fit self-center rounded-lg"
                             >
                                 {!isSubmitting ? "Send Message" : <RiLoader5Fill className="text-xl animate-spin" />}
                             </button>

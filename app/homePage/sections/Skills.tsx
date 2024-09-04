@@ -95,17 +95,15 @@ export default function SkillsSection() {
                 <div className="dm-text flex flex-col gap-8">
                     <h2 className={`text-2xl font-header`}>Technical Skills</h2>
                     <div className="flex flex-col items-center gap-4">
-                        {
-                            isSkillsExpanded ? (
-                                <div className="flex flex-row justify-center gap-4 flex-wrap">
-                                    {Skills.map((sk, i) => <SkillGauge key={`${sk.skill}-${i}`} {...sk} />)}
-                                </div>
-                            ) : (
-                                <div className="flex flex-row justify-center gap-4 flex-wrap">
-                                    {Skills.map((sk, i) => i < 3 ? <SkillGauge key={`${sk.skill}-${i}`} {...sk} /> : null)}
-                                </div>
-                            )
-                        }
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-8">
+                            {
+                                isSkillsExpanded
+                                    ? (Skills.map((sk, i) => <SkillGauge key={`${sk.skill}-${i}`} {...sk} />))
+                                    : (Skills.map((sk, i) => i < 3 ? <SkillGauge key={`${sk.skill}-${i}`} {...sk} /> : null))
+                            }
+                        </div>
+
                         <button
                             onClick={() => { setExpandSkills(!isSkillsExpanded) }}
                         >
