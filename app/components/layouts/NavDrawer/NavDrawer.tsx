@@ -7,6 +7,7 @@ import Hamburger from "hamburger-react"
 import { RiDownloadFill, RiExternalLinkFill, RiLoader4Fill } from "react-icons/ri"
 import { DarkModeContext } from "@/app/contexts/darkModeContext"
 import Toggle from "../../toggle"
+import MovingBackground from "../../effects/movingBackground"
 
 type NavDrawerProps = {
     children: React.ReactNode
@@ -92,7 +93,7 @@ export default function NavDrawer({
                 }
 
                 {/* Navbar (permanently fixed to the top of the screen) */}
-                <div className={`fixed top-0 bg-sky-200 overflow-x-hidden dark:bg-zinc-600 w-full h-16 z-20 flex flex-row w-full justify-between p-4 items-center`}>
+                <div className={`fixed top-0 overflow-x-hidden bg-sky-200 dark:bg-zinc-600 w-full h-16 z-20 flex flex-row w-full justify-between p-4 items-center`}>
                     <button
                         onClick={() => setNavOpen(!navOpen)}
                         className="dm-text p-4"
@@ -105,7 +106,7 @@ export default function NavDrawer({
                         href="/hornsby_resume_2024.pdf"
                         download={"hornsby_resume_2024"}
                     >
-                        <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Download</span>Resume<RiDownloadFill /></span>
+                        <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Take my</span>Resume<RiDownloadFill /></span>
                     </a>
                 </div>
 
@@ -247,6 +248,7 @@ export default function NavDrawer({
                         `}
                     >
                         <div className={`relative bg-white dark:bg-sky-900 w-screen`}>
+                            <MovingBackground />
                             <div
                                 className={`${navOpen ? 'opacity-100 z-10' : 'opacity-0 z-[-10]'} transition-[opacity] delay-[350ms] absolute top-0 right-0 bottom-0 left-0 bg-black/40`}
                                 onClick={() => setNavOpen(false)}

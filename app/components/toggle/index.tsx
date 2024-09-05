@@ -76,8 +76,8 @@ export default function Toggle({
                             h-full
                             rounded-full
                             ${toggled
-                            ? 'bg-zinc-600'
-                            : 'bg-sky-200'}
+                                ? 'bg-zinc-600'
+                                : 'bg-sky-200'}
                             `}>
                     </div>
                 </div>

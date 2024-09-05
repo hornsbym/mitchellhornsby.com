@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+
     *,
     html {
         scroll-behavior: smooth !important;
+        transition-property: all;
+        transition-timing-function: ease-out;
+        transition-duration: 350ms;
     }
 }
 
