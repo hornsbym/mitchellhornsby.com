@@ -7,7 +7,7 @@ import SectionContainer from "@/app/components/layouts/SectionContainer/SectionC
 import NcLogo from '@/public/nc_logo.svg'
 
 export default function Landing() {
-    const typewriterProps = {
+    const typewriterProps = { 
         loop: true,
         cursor: true,
         cursorBlinking: true,
