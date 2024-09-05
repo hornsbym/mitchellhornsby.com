@@ -106,7 +106,9 @@ export default function NavDrawer({
                         href="/hornsby_resume_2024.pdf"
                         download={"hornsby_resume_2024"}
                         onClick={async () => {
-                            const res = await fetch('api/resumeDownload')
+                            const res = await fetch('/api/resumeDownload', {
+                                method: "POST"
+                            })
                             console.log(res)
                         }}
                     >
