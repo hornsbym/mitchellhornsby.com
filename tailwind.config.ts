@@ -31,21 +31,21 @@ const config: Config = {
         header: ['var(--sora-font)'],
         body: ['var(--quicksand-font)']
       },
-    },
-    keyframes: {
-      squish: {
-        '0%, 100%': { transform: 'scaleY(1)' },
-        '50%': { transform: 'scaleY(.5)' },
+      keyframes: {
+        squish: {
+          '0%, 100%': { transform: 'scaleY(1)' },
+          '50%': { transform: 'scaleY(.5)' },
+        },
+        shapeDrift: {
+          'from': { top: '0px' },
+          'to': { top: '1000px' }
+        }
       },
-      shapeDrift: {
-        'from': { top: '0px' },
-        'to': { top: '1000px' }
+      animation: {
+        squish: 'squish 350ms ease-in-out infinite',
+        shapeDrift: 'shapeDrift 1s ease-linear'
       }
     },
-    animation: {
-      squish: 'squish 350ms ease-in-out infinite',
-      shapeDrift: 'shapeDrift 1s ease-linear'
-    }
   },
   plugins: [],
 };

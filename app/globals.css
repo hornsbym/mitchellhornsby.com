@@ -6,7 +6,8 @@
 
     *,
     html {
-        scroll-behavior: smooth !important;
+        /* scroll-behavior: smooth !important; */
+
         transition-property: all;
         transition-timing-function: ease-out;
         transition-duration: 350ms;

@@ -1,15 +1,23 @@
 'use client'
-import { init } from "next/dist/compiled/webpack/webpack"
 import { useEffect, useState } from "react"
+
+type MovingBackgroundProps = {
+    classNames?: ClassOverrides
+}
+
+type ClassOverrides = {
+    container?: string
+}
 
 /**
  * Randomly spawns and manages moving shapes in the background
  * @returns 
  */
-export default function MovingBackground() {
+export default function MovingBackground({
+    classNames = {}
+}: MovingBackgroundProps) {
     const maxShapes = 200
     const [shapes, setShapes] = useState<ShapeProps[]>([])
-
 
     useEffect(() => {
         let initShapes: ShapeProps[] = []
@@ -49,7 +57,7 @@ export default function MovingBackground() {
 
 
     return (
-        <div className="fixed top-0 right-0 bottom-0 left-0 ">
+        <div className={`fixed top-0 right-0 bottom-0 left-0 ${classNames.container ?? ''}`}>
             <div className="relative top-0 right-0 bottom-0 left-0 h-screen w-screen">
                 {shapes.map((shape, i) => <Shape key={`shape-${i}`} {...shape} />)}
             </div>
@@ -235,7 +243,7 @@ const Shape = ({
     }, [trigger])
 
     return (
-        <button
+        <div
             className={`
                 absolute
                 ${size}
@@ -245,7 +253,7 @@ const Shape = ({
                 !ease-in
                 ${duration}
                 ${delayClass}
-                ${className} 
+                ${className}
                 ${trigger
                     ? `${startTop} ${startRight} opacity-0`
                     : `${endTop}  ${endRight} opacity-100  !transition-none`

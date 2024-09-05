@@ -19,7 +19,7 @@ export default function Landing() {
             'originally from Georgia',
             'looking for work!',
             'a former college athlete',
-            'probably either hiking or skiing'
+            'probably on a mountain'
         ]
     }
 
@@ -71,13 +71,13 @@ export default function Landing() {
                     gap-8
                     dm-text
                     items-center
-                    text-xl
+                    text-lg
                     text-center"
                 >
                     <div className="flex flex-col gap-4">
-                        <p>{`I'm a full-stack engineer, with a slight preference for front-end development. I have a Computer Science degree from Washington and Lee University, and more than six years of real work experience. `}</p>
-                        <p>{`I recently founded my own web design & development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. I'll design, develop, and host websites for small businesses at a very competetive price.`}</p>
-                        <p>{`If you want to connect, please reach out! You can reach me through LinkedIn or email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`. There's also a contact form at the bottom of this website that will send me an email.`}</p>
+                        <p>{`I'm a full-stack engineer, with a slight preference for front-end development. I have a Computer Science degree from Washington and Lee University and 6+ years of experience building web and mobile applications.`}</p>
+                        <p>{`I recently founded the web design & development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
+                        <p>{`Feel free to reach out! You can DM me through LinkedIn or Instagram, email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
                     </div>
                     <div className="flex flex-row gap-4">
                         <SocialLink

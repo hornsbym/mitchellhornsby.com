@@ -88,7 +88,7 @@ export default function NavDrawer({
                 {
                     darkMode === undefined && (
                         <div className="fixed z-[99] flex flex-row w-full min-h-screen justify-center items-center bg-sky-900">
-                            <RiLoader4Fill className="animate-spin text-[5rem] text-white" />
+                            <RiLoader4Fill className="!transition-none animate-spin text-[5rem] text-white" />
                         </div>)
                 }
 
@@ -105,6 +105,9 @@ export default function NavDrawer({
                         target="__blank"
                         href="/hornsby_resume_2024.pdf"
                         download={"hornsby_resume_2024"}
+                        onClick={() => {
+                            fetch('api/resumeDownload')
+                        }}
                     >
                         <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Take my</span>Resume<RiDownloadFill /></span>
                     </a>
@@ -241,20 +244,22 @@ export default function NavDrawer({
                 {/* Content and overlay */}
                 <div className={`${darkMode === undefined ? 'hidden' : ''} relative flex flex-col bg-sky-200 dark:bg-zinc-600`}>
                     <div className={`
-                        ${!navOpen ? 'left-0' : `${drawerLeft} left-[100vw]`} 
+                        ${navOpen ? `${drawerLeft} left-[100vw]` : 'left-0'} 
                         ${transition}
                         absolute
                         flex
                         `}
                     >
                         <div className={`relative bg-white dark:bg-sky-900 w-screen`}>
-                            <MovingBackground />
                             <div
                                 className={`${navOpen ? 'opacity-100 z-10' : 'opacity-0 z-[-10]'} transition-[opacity] delay-[350ms] absolute top-0 right-0 bottom-0 left-0 bg-black/40`}
                                 onClick={() => setNavOpen(false)}
                             />
                             <div className="flex flex-col w-full" {...{ inert: navOpen ? 'true' as any : undefined }}>
+                                <MovingBackground />
+
                                 {children}
+
                                 <footer className="flex flex-row bg w-full p-4 bg-sky-200 dark:bg-zinc-600 dm-text justify-center items-center">
                                     &copy;2024 Mitchell Hornsby
                                 </footer>

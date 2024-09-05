@@ -100,11 +100,12 @@ export default function SkillsSection() {
                             {
                                 isSkillsExpanded
                                     ? (Skills.map((sk, i) => <SkillGauge key={`${sk.skill}-${i}`} {...sk} />))
-                                    : (Skills.map((sk, i) => i < 3 ? <SkillGauge key={`${sk.skill}-${i}`} {...sk} /> : null))
+                                    : (Skills.map((sk, i) => i < 4 ? <SkillGauge key={`${sk.skill}-${i}`} {...sk} /> : null))
                             }
                         </div>
 
                         <button
+                            className="z-0"
                             onClick={() => { setExpandSkills(!isSkillsExpanded) }}
                         >
                             {isSkillsExpanded ? (
