@@ -1,21 +1,11 @@
-const nodemailer = require('nodemailer')
-
-const emailClient = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: false, // Use `true` for port 465, `false` for all other ports
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-    },
-});
+import NodemailerClient from '@/app/api/lib/nodemailerClient'
 
 export async function POST(req: Request) {
     console.log(req)
 
     // Fill Nodemailer code here:
-    const emailRes: Response = await emailClient.sendMail({
-        from: `"mitchellhornsby.com" <${process.env.EMAIL}>`,
+    const emailRes: Response = await NodemailerClient.sendMail({
+        from: `"Website Automation" <${process.env.EMAIL}>`,
         to: process.env.EMAIL,
         subject: "Resume Download", // Subject line
         html: `

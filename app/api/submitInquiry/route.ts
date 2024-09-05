@@ -1,17 +1,6 @@
 import trim from 'validator/lib/trim'
 import escape from 'validator/lib/escape'
-
-const nodemailer = require('nodemailer')
-
-const emailClient = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: false, // Use `true` for port 465, `false` for all other ports
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-    },
-});
+import NodemailerClient from '@/app/api/lib/nodemailerClient'
 
 export async function POST(req: Request) {
     const body = await req.json()
@@ -25,7 +14,7 @@ export async function POST(req: Request) {
     message = escape(trim(message))
 
     // Fill Nodemailer code here:
-    const emailRes: Response = await emailClient.sendMail({
+    const emailRes: Response = await NodemailerClient.sendMail({
         from: `"${fullName}" <${process.env.EMAIL}>`, // sender address
         to: process.env.EMAIL, // list of receivers
         subject: "mitchellhornsby.com Inquiry", // Subject line
