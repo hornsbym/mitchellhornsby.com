@@ -1,6 +1,3 @@
-import trim from 'validator/lib/trim'
-import escape from 'validator/lib/escape'
-
 const nodemailer = require('nodemailer')
 
 const emailClient = nodemailer.createTransport({
@@ -29,7 +26,7 @@ export async function GET(req: Request) {
     }).then(res => {
         return new Response("success", { status: 200 })
     }).catch(err => {
-        return new Response("error", { status: 500 })
+        return new Response(err.message, { status: 500, })
     })
 
     return emailRes

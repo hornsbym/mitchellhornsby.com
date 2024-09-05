@@ -105,8 +105,9 @@ export default function NavDrawer({
                         target="__blank"
                         href="/hornsby_resume_2024.pdf"
                         download={"hornsby_resume_2024"}
-                        onClick={() => {
-                            fetch('api/resumeDownload')
+                        onClick={async () => {
+                            const res = await fetch('api/resumeDownload')
+                            console.log(res)
                         }}
                     >
                         <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Take my</span>Resume<RiDownloadFill /></span>
