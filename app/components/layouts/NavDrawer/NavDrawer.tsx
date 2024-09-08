@@ -83,8 +83,7 @@ export default function NavDrawer({
                 setDarkMode(!darkMode)
             }
         }}>
-
-            <div className={`${darkMode ? 'dark' : ''}`}>
+            <div className={`${darkMode ? 'dark' : ''} w-screen h-screen overflow-x-hidden`}>
                 {
                     darkMode === undefined && (
                         <div className="fixed z-[99] flex flex-row w-full min-h-screen justify-center items-center bg-sky-900">
@@ -93,7 +92,24 @@ export default function NavDrawer({
                 }
 
                 {/* Navbar (permanently fixed to the top of the screen) */}
-                <div className={`fixed top-0 overflow-x-hidden bg-sky-200 dark:bg-zinc-600 w-full h-16 z-20 flex flex-row w-full justify-between p-4 items-center`}>
+                <div className={`
+                    fixed
+                    top-0
+                    overflow-x-hidden
+                    overflow-y-hidden
+                    bg-sky-200
+                    dark:bg-zinc-600
+                    w-full
+                    h-16
+                    z-20
+                    flex
+                    flex-row
+                    w-full
+                    justify-between
+                    p-4
+                    items-center
+                    z-20
+                    `}>
                     <button
                         onClick={() => setNavOpen(!navOpen)}
                         className="dm-text p-4"
@@ -128,7 +144,8 @@ export default function NavDrawer({
                     bottom-0
                     bg-sky-200
                     dark:bg-zinc-600
-                    overflow-scroll
+                    overflow-y-auto
+                    overflow-x-hidden
                     z-10
                 `}>
                     <NavContext.Provider value={{
@@ -253,13 +270,13 @@ export default function NavDrawer({
                         flex
                         `}
                     >
-                        <div className={`relative bg-white dark:bg-sky-900 w-screen`}>
+                        <MovingBackground />
+                        <div className={`relative bg-transparent w-screen z-10`}>
                             <div
                                 className={`${navOpen ? 'opacity-100 z-10' : 'opacity-0 z-[-10]'} transition-[opacity] delay-[350ms] absolute top-0 right-0 bottom-0 left-0 bg-black/40`}
                                 onClick={() => setNavOpen(false)}
                             />
                             <div className="flex flex-col w-full" {...{ inert: navOpen ? 'true' as any : undefined }}>
-                                <MovingBackground />
 
                                 {children}
 

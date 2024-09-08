@@ -57,7 +57,7 @@ export default function MovingBackground({
 
 
     return (
-        <div className={`fixed top-0 right-0 bottom-0 left-0 ${classNames.container ?? ''}`}>
+        <div className={`fixed top-0 right-0 bottom-0 left-0 ${classNames.container ?? ''} bg-white dark:bg-sky-900`}>
             <div className="relative top-0 right-0 bottom-0 left-0 h-screen w-screen">
                 {shapes.map((shape, i) => <Shape key={`shape-${i}`} {...shape} />)}
             </div>
