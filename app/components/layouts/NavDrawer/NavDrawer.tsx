@@ -110,12 +110,21 @@ export default function NavDrawer({
                     items-center
                     z-20
                     `}>
-                    <button
-                        onClick={() => setNavOpen(!navOpen)}
-                        className="dm-text p-4"
-                    >
-                        <Hamburger toggled={navOpen} />
-                    </button>
+                    <div className={`flex flex-row gap-4`}>
+                        <button
+                            onClick={() => setNavOpen(!navOpen)}
+                            className="dm-text p-4"
+                        >
+                            <Hamburger toggled={navOpen} />
+                        </button>
+                        <div className="flex flex-row items-center gap-2">
+                            <Toggle
+                                toggled={darkMode}
+                                onToggle={() => setDarkMode(!darkMode)}
+                                size="small"
+                            />
+                        </div>
+                    </div>
                     <a
                         className="bg-sky-800 dark:bg-white dm-text-inverse flex flex-col items-center justify-center px-4 py-2 rounded-lg"
                         target="__blank"
@@ -131,8 +140,6 @@ export default function NavDrawer({
                         <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Take my</span>Resume<RiDownloadFill /></span>
                     </a>
                 </div>
-
-
                 {/* Navbar drawer */}
                 <nav className={`
                     ${width} 
@@ -246,16 +253,6 @@ export default function NavDrawer({
                                     labelContainer: '!bg-sky-200 dark:!bg-zinc-600'
                                 }}
                             />
-                            <li className="self-end">
-                                <div className="flex flex-row items-center gap-2">
-                                    <Toggle
-                                        toggled={darkMode}
-                                        onToggle={() => setDarkMode(!darkMode)}
-                                        size="small"
-                                        label={<p className="dm-text">{`${darkMode ? 'Dark theme' : 'Light theme'}`}</p>}
-                                    />
-                                </div>
-                            </li>
                         </ul>
                     </NavContext.Provider>
                 </nav>-

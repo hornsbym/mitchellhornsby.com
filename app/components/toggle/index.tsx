@@ -1,3 +1,5 @@
+import { RiMoonFill, RiSunFill } from "react-icons/ri"
+
 type ToggleProps = {
     toggled?: boolean
     onToggle: () => void
@@ -71,14 +73,19 @@ export default function Toggle({
                 }>
                     <div
                         className={`
+                            flex
+                            flex-row
+                            justify-center
+                            items-center
                             transition-colors
                             w-full
                             h-full
                             rounded-full
                             ${toggled
                                 ? 'bg-zinc-600'
-                                : 'bg-sky-200'}
+                                : 'bg-amber-400'}
                             `}>
+                        {toggled ? <RiMoonFill className="text-white" /> : <RiSunFill className="text-black" />}
                     </div>
                 </div>
             </div>
