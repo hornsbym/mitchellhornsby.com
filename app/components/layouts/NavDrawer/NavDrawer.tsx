@@ -119,8 +119,8 @@ export default function NavDrawer({
                     <a
                         className="bg-sky-800 dark:bg-white dm-text-inverse flex flex-col items-center justify-center px-4 py-2 rounded-lg"
                         target="__blank"
-                        href="/hornsby_resume_2024.pdf"
-                        download={"hornsby_resume_2024"}
+                        href="/2024_revised_resume_web_dev.pdf"
+                        download={"2024_revised_resume_web_dev"}
                         onClick={async () => {
                             const res = await fetch('/api/resumeDownload', {
                                 method: "POST"
