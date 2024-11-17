@@ -83,7 +83,7 @@ export default function NavDrawer({
                 setDarkMode(!darkMode)
             }
         }}>
-            <div className={`${darkMode ? 'dark' : ''} w-screen h-screen overflow-x-hidden`}>
+            <div className={`${darkMode ? 'dark' : ''} w-full h-screen overflow-x-clip`}>
                 {
                     darkMode === undefined && (
                         <div className="fixed z-[99] flex flex-row w-full min-h-screen justify-center items-center bg-sky-900">
@@ -173,32 +173,32 @@ export default function NavDrawer({
                             >
                                 <NavSubMenu label="Novel Concept Studio">
                                     <NavLink
-                                        label={"Bean Around the Block"}
-                                        href={`https://beanaroundtheblock.novelconcept.io`}
+                                        label={"Bean Catering"}
+                                        href={`https://beancatering.novelconcept.io`}
                                         linkProps={{
                                             target: '__blank'
                                         }}
                                         icon={<RiExternalLinkFill className="text-white" />}
                                     />
                                     <NavLink
-                                        label={"Diamond Jim's"}
-                                        href={`https://diamondjims.novelconcept.io`}
+                                        label={"Goodness Cafe"}
+                                        href={`https://goodnesscafe.novelconcept.io`}
                                         linkProps={{
                                             target: '__blank'
                                         }}
                                         icon={<RiExternalLinkFill className="text-white" />}
                                     />
                                     <NavLink
-                                        label={"Dinners By Derek"}
-                                        href={`https://dinnersbyderek.com`}
+                                        label={"Loggers"}
+                                        href={`https://loggers.novelconcept.io`}
                                         linkProps={{
                                             target: '__blank'
                                         }}
                                         icon={<RiExternalLinkFill className="text-white" />}
                                     />
                                     <NavLink
-                                        label={"Hornsby Health and Fitness"}
-                                        href={`https://hornsbyhealthandfitness.com`}
+                                        label={"Sonora Brewing"}
+                                        href={`https://sonorabrewing.novelconcept.io`}
                                         linkProps={{
                                             target: '__blank'
                                         }}
@@ -259,7 +259,7 @@ export default function NavDrawer({
 
 
                 {/* Content and overlay */}
-                <div className={`${darkMode === undefined ? 'hidden' : ''} relative flex flex-col bg-sky-200 dark:bg-zinc-600`}>
+                <div className={`${darkMode === undefined ? 'hidden' : ''} relative flex flex-col bg-sky-200 dark:bg-zinc-600 w-screen`}>
                     <div className={`
                         ${navOpen ? `${drawerLeft} left-[100vw]` : 'left-0'} 
                         ${transition}
@@ -270,7 +270,7 @@ export default function NavDrawer({
                         <MovingBackground />
                         <div className={`relative bg-transparent w-screen z-10`}>
                             <div
-                                className={`${navOpen ? 'opacity-100 z-10' : 'opacity-0 z-[-10]'} transition-[opacity] delay-[350ms] absolute top-0 right-0 bottom-0 left-0 bg-black/40`}
+                                className={`${navOpen ? 'opacity-100 z-10' : 'opacity-0 z-[-10]'} transition-[opacity] absolute top-0 right-0 bottom-0 left-0 bg-black/40 w-full`}
                                 onClick={() => setNavOpen(false)}
                             />
                             <div className="flex flex-col w-full" {...{ inert: navOpen ? 'true' as any : undefined }}>
