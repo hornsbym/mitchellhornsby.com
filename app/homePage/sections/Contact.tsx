@@ -60,7 +60,8 @@ export default function Contact() {
             id="contact"
         >
             <SectionContainer className={{
-                inner: `bg-sky-200 p-4 rounded-lg drop-shadow-light dark:drop-shadow-dark`,
+                outer: 'max-w-[750px]',
+                inner: `bg-zinc-200 p-4 rounded-lg drop-shadow-dark`,
             }}>
                 <h2 className="text-3xl h-[5rem] font-header">Say Hello!</h2>
                 <div className={`flex flex-col w-5/6 md:w-3/4 self-center min-h-36 items-stretch justify-center`}>

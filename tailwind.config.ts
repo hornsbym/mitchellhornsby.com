@@ -24,7 +24,7 @@ const config: Config = {
         overlay: 'rgba(39, 39, 42, .6)'
       },
       dropShadow: {
-        dark: `4px 4px 8px rgba(250, 204, 21, .3)`,
+        dark: `0px 0px 10px rgba(250, 204, 21, .3)`,
         light: `4px 4px 8px rgba(12, 74, 110, .50)`
       },
       fontFamily: {

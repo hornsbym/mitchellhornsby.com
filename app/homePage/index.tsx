@@ -1,14 +1,12 @@
-import CareerTimeline from "./sections/CareerTimeline";
 import Contact from "./sections/Contact";
 import Landing from "./sections/Landing";
-import SkillsSection from "./sections/Skills";
+import Projects from "./sections/Projects/section";
 
 export default function HomePage() {
     return (
         <>
             <Landing />
-            <SkillsSection />
-            <CareerTimeline />
+            <Projects />
             <Contact />
         </>
     );

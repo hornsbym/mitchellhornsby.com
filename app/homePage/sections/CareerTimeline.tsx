@@ -111,7 +111,7 @@ const TimelineStop = ({
 }: TimelineStopProps) => {
     const [isExpanded, setIsExpanded] = useState(false)
     return (
-        <div className={`${color} px-4 rounded-xl flex flex-row gap-4 w-full justify-center dm-text-inverse drop-shadow-light dark:drop-shadow-dark `}>
+        <div className={`${color} px-4 rounded-xl flex flex-row gap-4 w-full justify-center dm-text-inverse drop-shadow-dark `}>
             <div className="flex flex-col md:flex-1">
                 {/* Top spacer */}
                 <TimelineSpacer className="flex-none h-6" />
@@ -174,7 +174,7 @@ const TimelineItems = [
         icon: <TimelineStopIcon color="bg-yellow-400"
             icon={<RiPushpin2Fill className="text-black text-xl" />}
         />,
-        color: 'dark:bg-white bg-sky-900',
+        color: 'dark:bg-white bg-zinc-900',
         date: {
             begin: new Date(2018, 5, 1),
             end: new Date(2018, 8, 1),
@@ -206,7 +206,7 @@ const TimelineItems = [
         icon: <TimelineStopIcon color="bg-yellow-400"
             icon={<RiPushpin2Fill className="text-black text-xl" />}
         />,
-        color: 'dark:bg-white bg-sky-900',
+        color: 'dark:bg-white bg-zinc-900',
         date: {
             begin: new Date(2019, 4, 1),
         },
@@ -231,7 +231,7 @@ const TimelineItems = [
         icon: <TimelineStopIcon color="bg-yellow-400"
             icon={<RiPushpin2Fill className="text-black text-xl" />}
         />,
-        color: 'dark:bg-white bg-sky-900',
+        color: 'dark:bg-white bg-zinc-900',
         date: {
             begin: new Date(2019, 5, 1),
             end: new Date(2023, 4, 1),
@@ -272,7 +272,7 @@ const TimelineItems = [
             color="bg-yellow-400"
             icon={<RiPushpin2Fill className="text-black text-xl" />}
         />,
-        color: 'dark:bg-white bg-sky-900',
+        color: 'dark:bg-white bg-zinc-900',
         date: {
             begin: new Date(2023, 4, 1),
             end: new Date(2024, 4, 1),
@@ -339,7 +339,7 @@ const TimelineItems = [
         icon: <TimelineStopIcon color="bg-yellow-400"
             icon={<RiPushpin2Fill className="text-black text-xl" />}
         />,
-        color: 'dark:bg-white bg-sky-900',
+        color: 'dark:bg-white bg-zinc-900',
         date: {
             begin: new Date(2024, 5, 1),
         },

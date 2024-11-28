@@ -29,8 +29,8 @@ export const NavLink = ({
     } = useContext(NavContext)
 
     return (
-        <li className={`relative z-10 group w-full border-l-2 border-sky-800 ${classNames?.container ?? ''}`}>
-            <div className="absolute z-[-20] flex flex-col justify-center items-center top-0 left-0 bottom-0 right-0 w-8 bg-sky-800">
+        <li className={`relative z-10 group w-full border-l-2 border-zinc-800 ${classNames?.container ?? ''}`}>
+            <div className="absolute z-[-20] flex flex-col justify-center items-center top-0 left-0 bottom-0 right-0 w-8 bg-zinc-800">
                 {icon}
             </div>
             {/* When nav is closed, turn links in to text so they are removed from the tab flow */}

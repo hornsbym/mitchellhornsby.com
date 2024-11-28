@@ -2,12 +2,12 @@
 import Image from "next/image";
 import profile_pic from '@/public/profile_pic_cropped.jpg'
 import { Typewriter } from 'react-simple-typewriter'
-import { RiInstagramLine, RiLinkedinBoxFill } from "react-icons/ri";
 import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 import NcLogo from '@/public/nc_logo.svg'
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 export default function Landing() {
-    const typewriterProps = { 
+    const typewriterProps = {
         loop: true,
         cursor: true,
         cursorBlinking: true,
@@ -29,7 +29,6 @@ export default function Landing() {
                 className="
                 flex
                 flex-col
-                md:flex-row
                 justify-center
                 pt-32
                 gap-16
@@ -47,11 +46,12 @@ export default function Landing() {
                     flex-col
                     gap-8
                     w-full
+                    max-w-[750px]
                     items-center
-                    flex-1"
-                >
+                    flex-1
+                ">
                     <div
-                        className="w-fit rounded-full border-black dark:border-white border-8 drop-shadow-light dark:drop-shadow-dark"
+                        className="w-fit rounded-full border-black dark:border-white border-8 drop-shadow-dark "
                     >
                         <Image
                             src={profile_pic}
@@ -60,7 +60,22 @@ export default function Landing() {
                             priority
                         />
                     </div>
-                    <h1 className="dm-text text-3xl h-[5rem] font-body text-center w-3/4 sm:w-1/2">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
+                    <h1 className="dm-text text-3xl h-[5rem] font-body text-left w-3/4 sm:w-1/2">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
+                </div>
+                <div className="flex flex-row gap-4">
+                    <SocialLink
+                        link={"https://github.com/hornsbym/"}
+                        icon={<BsGithub className="text-[2.5rem]" />}
+                    />
+                    <SocialLink
+                        link={"https://www.linkedin.com/in/mitchellhornsby/"}
+                        icon={<BsLinkedin className="text-[2.25rem]" />}
+                    />
+                    <SocialLink
+                        link={"https://novelconcept.studio"}
+                        icon={<Image className="fill-white invert dark:invert-0" src={NcLogo} alt="Novel Concept Studio" />}
+                        className="!p-3"
+                    />
                 </div>
                 <div className="
                     relative
@@ -72,27 +87,14 @@ export default function Landing() {
                     dm-text
                     items-center
                     text-lg
-                    text-center"
+                    text-left
+                    max-w-[750px]
+                    "
                 >
                     <div className="flex flex-col gap-4">
                         <p>{`I'm a full-stack engineer, with a slight preference for front-end development. I have a Computer Science degree from Washington and Lee University and 6+ years of experience building web and mobile applications.`}</p>
-                        <p>{`I recently founded the web design & development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
-                        <p>{`Feel free to reach out! You can DM me through LinkedIn or Instagram, email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-sky-600" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
-                    </div>
-                    <div className="flex flex-row gap-4">
-                        <SocialLink
-                            link={"https://www.instagram.com/mitchellrh78/"}
-                            icon={<RiInstagramLine className="text-[2.5rem]" />}
-                        />
-                        <SocialLink
-                            link={"https://www.linkedin.com/in/mitchellhornsby/"}
-                            icon={<RiLinkedinBoxFill className="text-[2.5rem]" />}
-                        />
-                        <SocialLink
-                            link={"https://novelconcept.studio"}
-                            icon={<Image className="fill-white invert dark:invert-0" src={NcLogo} alt="Novel Concept Studio" />}
-                            className="!p-3"
-                        />
+                        <p>{`I recently founded the web design & development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
+                        <p>{`Feel free to reach out! You can DM me through LinkedIn or Instagram, email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
                     </div>
                 </div>
             </section>
@@ -107,7 +109,7 @@ type SocialLinkProps = {
     className?: string
 }
 
-const SocialLink = ({
+export const SocialLink = ({
     link,
     icon,
     className
@@ -119,16 +121,15 @@ const SocialLink = ({
             justify-center
             items-center
             dm-text-inverse
-            bg-sky-900
+            bg-zinc-900
             dark:bg-white
             scale-1
-            hover:scale-125
+            hover:scale-[110%]
             p-2
             w-16
             h-16
             rounded-full
-            drop-shadow-light
-            dark:drop-shadow-dark
+            drop-shadow-dark
             ${className ?? ''}
             `}
         href={link}
