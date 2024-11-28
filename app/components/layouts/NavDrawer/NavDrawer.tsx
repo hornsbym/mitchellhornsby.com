@@ -102,30 +102,32 @@ export default function NavDrawer({
 
                     {/* Navbar (permanently fixed to the top of the screen) */}
                     <div className={`
-                    fixed
-                    top-0
-                    overflow-x-hidden
-                    overflow-y-hidden
-                    bg-zinc-400
-                    dark:bg-zinc-600
-                    w-full
-                    h-16
-                    z-20
-                    flex
-                    flex-row
-                    w-full
-                    justify-between
-                    p-4
-                    items-center
-                    z-20
+                        fixed
+                        top-0
+                        overflow-x-hidden
+                        overflow-y-hidden
+                        bg-zinc-400
+                        dark:bg-zinc-600
+                        w-full
+                        h-16
+                        z-20
+                        flex
+                        flex-row
+                        justify-between
+                        p-4
+                        items-center
+                        z-20
                     `}>
+                        {/* <div className="relative w-full h-full -z-1">
+                            <div className="absolute w-full h-full bg-texture"></div>
+                        </div> */}
                         <div className={`flex flex-row gap-4`}>
-                            <button
+                            {/* <button
                                 onClick={() => setNavOpen(!navOpen)}
                                 className="dm-text p-4"
                             >
                                 <Hamburger toggled={navOpen} />
-                            </button>
+                            </button> */}
                             <div className="flex flex-row items-center gap-2">
                                 <Toggle
                                     toggled={darkMode}
@@ -145,24 +147,24 @@ export default function NavDrawer({
                                 })
                             }}
                         >
-                            <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Take my</span>Resume<BsDownload className="ml-2"/></span>
+                            <span className="flex flex-row gap-1 items-center"><span className="hidden sm:flex">Take my</span>Resume<BsDownload className="ml-2" /></span>
                         </a>
                     </div>
                     {/* Navbar drawer */}
                     <nav className={`
-                    ${width} 
-                    w-screen
-                    ${navOpen ? `left-0` : `${negativeDrawerLeft} left-[-100vw]`}
-                    ${transition}
-                    fixed
-                    top-16
-                    bottom-0
-                    bg-zinc-200
-                    dark:bg-zinc-600
-                    overflow-y-auto
-                    overflow-x-hidden
-                    z-10
-                `}>
+                        ${width} 
+                        w-screen
+                        ${navOpen ? `left-0` : `${negativeDrawerLeft} left-[-100vw]`}
+                        ${transition}
+                        fixed
+                        top-16
+                        bottom-0
+                        bg-zinc-200
+                        dark:bg-zinc-600
+                        overflow-y-auto
+                        overflow-x-hidden
+                        z-10
+                    `}>
                         <NavContext.Provider value={{
                             isNavOpen: navOpen,
                             setNavOpen: setNavOpen

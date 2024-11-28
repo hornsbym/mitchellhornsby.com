@@ -16,19 +16,20 @@ export default function Projects() {
                 setLoading(false)
             })
     }, [])
-    
+
     return (
         <section id="projects" className="pt-32">
             <SectionContainer>
-                {loading
-                    ? (<RiLoader2Fill className="animate-spin text-[6rem]" />)
-                    : (projects && (<div className="dm-text flex flex-col gap-8">
-                        <h2 className={`text-2xl font-header`}>Projects</h2>
-                        <div className="flex flex-col items-center gap-8">
-                            {projects.map((proj, i) => <ProjectTile key={`${proj.id}-${i}`} {...proj} />)}
-                        </div>
-                    </div>))
-                }
+                <div className="dm-text flex flex-col items-center gap-16">
+                    <h2 className={`max-w-[66%] text-2xl font-header text-center`}><u>Explore</u> My Recent Projects</h2>
+                    {loading
+                        ? (<RiLoader2Fill className="animate-spin text-[6rem] dark:text-white" />)
+                        : (projects && (
+                            <div className="flex flex-col items-center gap-8">
+                                {projects.map((proj, i) => <ProjectTile key={`${proj.id}-${i}`} {...proj} />)}
+                            </div>
+                        ))}
+                </div>
             </SectionContainer>
         </section>
 

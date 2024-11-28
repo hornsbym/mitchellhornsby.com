@@ -52,7 +52,8 @@ const Torus = ({
 }: TorusProps) => {
     const torusGeometry = new THREE.TorusGeometry()
     const torusMesh = React.useRef();
-    const startingQuaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 1, 1), -Math.PI);
+    const startingQuaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 0), 0);
+    const middleQuaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), 7 * Math.PI / 6);
     const endingQuaternion = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 2);
 
     const torusIntroScaleKeyframes = new THREE.VectorKeyframeTrack(
@@ -63,9 +64,10 @@ const Torus = ({
     )
     const torusIntroRotKeyframes = new THREE.QuaternionKeyframeTrack(
         '.quaternion',
-        [0, 1.25],
+        [0, .33, 1.25],
         [
             startingQuaternion.x, startingQuaternion.y, startingQuaternion.z, startingQuaternion.w,
+            middleQuaternion.x, middleQuaternion.y, middleQuaternion.z, middleQuaternion.w,
             endingQuaternion.x, endingQuaternion.y, endingQuaternion.z, endingQuaternion.w
         ],
         THREE.InterpolateSmooth
@@ -107,6 +109,7 @@ const Torus = ({
                 <points
                     geometry={torusGeometry}
                 >
+                    <meshStandardMaterial />
                     <pointsMaterial color={color} size={size} />
                 </points>
             </mesh>

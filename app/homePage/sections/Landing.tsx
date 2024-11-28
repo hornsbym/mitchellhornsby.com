@@ -31,72 +31,87 @@ export default function Landing() {
                 flex-col
                 justify-center
                 pt-32
-                gap-16
-                lg:gap-8
+
                 items-center
                 w-full
                 aspect-[7/6]
                 md:aspect-[7/4]
                 lg:aspect-[7/3]
-                xl:aspect-[16/5]"
+                xl:aspect-[16/5]
+                "
                 id="home"
             >
-                <div className="
+                <div className={`
                     flex
                     flex-col
-                    gap-8
-                    w-full
-                    max-w-[750px]
+                    px-8
+                    py-12
+                    gap-16
+                    lg:gap-8
+                    justify-center
                     items-center
-                    flex-1
-                ">
-                    <div
-                        className="w-fit rounded-full border-black dark:border-white border-8 drop-shadow-dark "
-                    >
-                        <Image
-                            src={profile_pic}
-                            alt="Portrait of Mitchell Hornsby standing in front of a snowy landscape at Yosemite National Park."
-                            className="rounded-full aspect-square object-cover"
-                            priority
+                    bg-white/60
+                    dark:bg-zinc-900/60
+                    rounded-lg
+                `}>
+                    <div className="
+                        flex
+                        flex-col
+                        gap-8
+                        w-full
+                        max-w-[750px]
+                        items-center
+                        flex-1
+                    ">
+                        <div
+                            className="w-fit rounded-full border-black dark:border-white border-8 drop-shadow-dark "
+                        >
+                            <Image
+                                src={profile_pic}
+                                alt="Portrait of Mitchell Hornsby standing in front of a snowy landscape at Yosemite National Park."
+                                className="rounded-full aspect-square object-cover"
+                                priority
+                            />
+                        </div>
+                        <h1 className="dm-text text-3xl h-[5rem] font-body text-left w-3/4 sm:w-1/2">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
+                    </div>
+                    <div className="flex flex-row gap-4">
+                        <SocialLink
+                            link={"https://github.com/hornsbym/"}
+                            icon={<BsGithub className="text-[2.5rem]" />}
+                        />
+                        <SocialLink
+                            link={"https://www.linkedin.com/in/mitchellhornsby/"}
+                            icon={<BsLinkedin className="text-[2.25rem]" />}
+                        />
+                        <SocialLink
+                            link={"https://novelconcept.studio"}
+                            icon={<Image className="fill-white invert dark:invert-0" src={NcLogo} alt="Novel Concept Studio" />}
+                            className="!p-3"
                         />
                     </div>
-                    <h1 className="dm-text text-3xl h-[5rem] font-body text-left w-3/4 sm:w-1/2">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
-                </div>
-                <div className="flex flex-row gap-4">
-                    <SocialLink
-                        link={"https://github.com/hornsbym/"}
-                        icon={<BsGithub className="text-[2.5rem]" />}
-                    />
-                    <SocialLink
-                        link={"https://www.linkedin.com/in/mitchellhornsby/"}
-                        icon={<BsLinkedin className="text-[2.25rem]" />}
-                    />
-                    <SocialLink
-                        link={"https://novelconcept.studio"}
-                        icon={<Image className="fill-white invert dark:invert-0" src={NcLogo} alt="Novel Concept Studio" />}
-                        className="!p-3"
-                    />
-                </div>
-                <div className="
-                    relative
-                    flex
-                    md:flex-1
-                    w-none
-                    flex-col
-                    gap-8
-                    dm-text
-                    items-center
-                    text-lg
-                    text-left
-                    max-w-[750px]
-                    "
-                >
-                    <div className="flex flex-col gap-4">
-                        <p>{`I'm a full-stack engineer, with a slight preference for front-end development. I have a Computer Science degree from Washington and Lee University and 6+ years of experience building web and mobile applications.`}</p>
-                        <p>{`I recently founded the web design & development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
-                        <p>{`Feel free to reach out! You can DM me through LinkedIn or Instagram, email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
+                    <div className="
+                        relative
+                        flex
+                        md:flex-1
+                        w-none
+                        flex-col
+                        gap-8
+                        dm-text
+                        items-center
+                        text-lg
+                        text-left
+                        max-w-[750px]
+                        "
+                    >
+                        <div className="flex flex-col gap-4">
+                            <p>{`I'm a full-stack software engineer that's particularly experienced in frontend development. I've professionally contributed to every aspect of both web app and cross-platform mobile app development, from the UI to the database. I've worked with both massive corporations and starups; I pride myself on being a flexible and tenacious problem solver.`}</p>
+                            <p>{`I've begun providing freelance web development services to small businesses through my web development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
+                            <p>{`Please reach out! I'm always eager to expand my network. You can DM me through LinkedIn or email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
+                        </div>
                     </div>
                 </div>
+
             </section>
         </SectionContainer>
 

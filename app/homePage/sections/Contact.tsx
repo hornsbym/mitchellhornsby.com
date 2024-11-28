@@ -63,7 +63,7 @@ export default function Contact() {
                 outer: 'max-w-[750px]',
                 inner: `bg-zinc-200 p-4 rounded-lg drop-shadow-dark`,
             }}>
-                <h2 className="text-3xl h-[5rem] font-header">Say Hello!</h2>
+                <h2 className="text-3xl h-[5rem] font-header self-center"><u>Say</u> Hello!</h2>
                 <div className={`flex flex-col w-5/6 md:w-3/4 self-center min-h-36 items-stretch justify-center`}>
                     {formRes && formRes.ok ? (<div className="self-center">
                         {`Thanks, I've got your message! I'll contact you shortly.`}
