@@ -55,19 +55,19 @@ export default function ProjectTile({ id }: Props) {
                         {/* Project details */}
                         <div
                             className={`
-                flex
-                flex-1
-                flex-col
-                dark:bg-zinc-200
-                dark:text-zinc-900
-                bg-zinc-700
-                text-zinc-100
-                rounded-lg
-                py-4
-                px-6
-                sm:py-8
-                sm:px-12
-        `}>
+                                flex
+                                flex-1
+                                flex-col
+                                dark:bg-zinc-200
+                                dark:text-zinc-900
+                                bg-zinc-700
+                                text-zinc-100
+                                rounded-lg
+                                py-4
+                                px-6
+                                sm:py-8
+                                sm:px-12
+                        `}>
                             <div className={`flex flex-row flex-wrap justify-between`}>
                                 <h3 className="flex flex-1 flex-row text-2xl font-header items-end">{project.title}</h3>
                                 <div className={`flex flex-row gap-4`}>
@@ -102,15 +102,17 @@ export default function ProjectTile({ id }: Props) {
                         </div>
                         {/* Project skills */}
                         <div className={`
-            relative
-            px-2
-            sm:px-4
-            z-[-1]
-            flex
-            flex-row
-            flex-wrap
-            text-lg
-            `}>
+                            relative
+                            px-2
+                            sm:px-4
+                            z-[-1]
+                            flex
+                            flex-row
+                            justify-stretch
+                            sm:justify-start
+                            flex-wrap
+                            text-lg
+                            `}>
                             {project.skills.map((skill, i) => <SkillTag key={`${skill.id}`} {...skill} zIndex={i} />)}
                         </div>
                     </div>
@@ -132,7 +134,10 @@ const SkillTag = ({ name, tagColor, tagFontColor, zIndex }: SkillProps) => {
         className={`
             relative
             flex
+            flex-1
+            sm:flex-initial
             flex-row
+            justify-center
             px-4
             pb-2
             rounded-b-md
@@ -145,7 +150,7 @@ const SkillTag = ({ name, tagColor, tagFontColor, zIndex }: SkillProps) => {
             zIndex: `-${zIndex}`
         }}
     >
-        <p style={{
+        <p className="flex flex-0 text-nowrap" style={{
             color: `#${tagFontColor}`
         }}>{name}</p>
     </div>)
