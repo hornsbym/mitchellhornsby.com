@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 export async function POST(req: Request) {
   const body = await req.json();
   let { projectId } = body;
