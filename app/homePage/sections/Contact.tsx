@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { useState } from "react";
-import { RiLoader5Fill } from "react-icons/ri";
+import { RiLoader4Fill } from "react-icons/ri";
 import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -56,15 +56,18 @@ export default function Contact() {
                 justify-center
                 pt-32
                 pb-16
+                text-lg
+                font-primary
             `}
             id="contact"
         >
             <SectionContainer className={{
-                outer: 'max-w-[750px]',
-                inner: `bg-zinc-200 p-4 rounded-lg drop-shadow-dark`,
+                outer: 'relative max-w-[750px]',
+                inner: `bg-zinc-200 p-4 rounded-lg drop-shadow-dark overflow-clip py-8`,
             }}>
-                <h2 className="text-3xl h-[5rem] font-header self-center"><u>Say</u> Hello!</h2>
-                <div className={`flex flex-col w-5/6 md:w-3/4 self-center min-h-36 items-stretch justify-center`}>
+                <div className={`absolute top-0 right-0 bottom-0 left-0 bg-texture -z-1`} />
+                <h2 className="relative z-1 text-5xl h-[5rem] font-header self-center"><u>Say</u> Hello!</h2>
+                <div className={`relative z-1 flex flex-col w-5/6 md:w-3/4 self-center min-h-36 items-stretch justify-center`}>
                     {formRes && formRes.ok ? (<div className="self-center">
                         {`Thanks, I've got your message! I'll contact you shortly.`}
                     </div>) : (
@@ -98,7 +101,7 @@ export default function Contact() {
                                 type="submit"
                                 className="flex flex-row items-center justify-center py-2 px-6 bg-yellow-400 w-fit self-center rounded-lg"
                             >
-                                {!isSubmitting ? "Send Message" : <RiLoader5Fill className="text-xl animate-spin" />}
+                                {!isSubmitting ? "Send Message" : <RiLoader4Fill className="text-xl animate-spin" />}
                             </button>
                             {(formRes && !formRes.ok) ? (
                                 <p className="text-red-500 italic">{`Sorry, something went wrong. Try again in a little while.`}</p>

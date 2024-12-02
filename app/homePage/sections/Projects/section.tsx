@@ -2,8 +2,7 @@
 import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 import ProjectTile from "./components/ProjectTile";
 import { useState, useEffect, ReactNode, useCallback } from "react";
-import { RiArrowLeftSLine, RiArrowRightSLine, RiLoader2Fill } from "react-icons/ri";
-import { BsSortDown, BsSortUp } from "react-icons/bs";
+import { RiArrowLeftSLine, RiArrowRightSLine, RiLoader4Fill } from "react-icons/ri";
 
 type ProjectsData = {
     docs: [{ id: number }],
@@ -69,9 +68,9 @@ export default function Projects() {
         <section id="projects" className="pt-32">
             <SectionContainer>
                 <div className="dm-text flex flex-1 flex-col items-center gap-16 w-full">
-                    <h2 className={`max-w-[66%] text-2xl font-header text-center`}><u>Explore</u> My Recent Projects</h2>
+                    <h2 className={`max-w-[66%] text-5xl font-header text-center`}><u>Explore</u> My Recent Projects</h2>
                     {loading
-                        ? (<RiLoader2Fill className="animate-spin text-[6rem] dark:text-white" />)
+                        ? (<RiLoader4Fill className="animate-spin text-[6rem] dark:text-white" />)
                         : (projectsData && (
                             <div className="flex flex-col w-full items-center gap-8">
                                 {/* Filters */}

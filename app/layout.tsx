@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import { Sora, Quicksand } from "next/font/google";
 import "./globals.css";
-import NavDrawer from "./components/layouts/NavDrawer/NavDrawer";
+import NavContainer from "./components/layouts/NavDrawer/NavDrawer";
 import Script from "next/script";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
 
 const sora = Sora(
   {
@@ -56,9 +51,9 @@ export default function RootLayout({
         ${quicksand.variable}
         min-h-screen
       `}>
-          <NavDrawer drawerWidth={25}>
+          <NavContainer>
             {children}
-          </NavDrawer>
+          </NavContainer>
       </body>
     </html>
   );

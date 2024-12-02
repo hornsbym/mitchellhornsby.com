@@ -31,7 +31,6 @@ export default function Landing() {
                 flex-col
                 justify-center
                 pt-32
-
                 items-center
                 w-full
                 aspect-[7/6]
@@ -70,10 +69,11 @@ export default function Landing() {
                                 src={profile_pic}
                                 alt="Portrait of Mitchell Hornsby standing in front of a snowy landscape at Yosemite National Park."
                                 className="rounded-full aspect-square object-cover"
+                                sizes="250px"
                                 priority
                             />
                         </div>
-                        <h1 className="dm-text text-3xl h-[5rem] font-body text-left w-3/4 sm:w-1/2">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
+                        <h1 className="dm-text text-4xl h-[7rem] font-body text-left w-3/4 sm:w-1/2">{`Hi, I'm `}<span className="font-bold font-header"><Typewriter {...typewriterProps} /></span></h1>
                     </div>
                     <div className="flex flex-row gap-4">
                         <SocialLink
@@ -107,7 +107,7 @@ export default function Landing() {
                         <div className="flex flex-col gap-4">
                             <p>{`I'm a full-stack software engineer that's particularly experienced in frontend development. I've professionally contributed to every aspect of both web app and cross-platform mobile app development, from the UI to the database. I've worked with both massive corporations and starups; I pride myself on being a flexible and tenacious problem solver.`}</p>
                             <p>{`I've begun providing freelance web development services to small businesses through my web development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
-                            <p>{`Please reach out! I'm always eager to expand my network. You can DM me through LinkedIn or email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
+                            <p>{`Please reach out! I'm always eager to expand my network. You can DM me through LinkedIn, email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
                         </div>
                     </div>
                 </div>
