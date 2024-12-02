@@ -1,11 +1,10 @@
 'use client'
 import { useEffect, useState } from "react"
-import { RiLoader4Fill } from "react-icons/ri"
 import { DarkModeContext } from "@/app/contexts/darkModeContext"
 import Toggle from "../../toggle"
-import MovingBackground from "../../effects/MovingBackground"
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
 import { BsDownload } from "react-icons/bs"
+import MovingBackground from "../../effects/MovingBackground"
 
 const apolloClient = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_CMS_URL}/api/graphql`,
