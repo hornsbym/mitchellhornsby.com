@@ -92,7 +92,7 @@ export default function NavDrawer({
                     setDarkMode(!darkMode)
                 }
             }}>
-                <div className={`${darkMode ? 'dark' : ''} w-full h-screen overflow-x-clip`}>
+                <div className={`${darkMode ? 'dark' : ''} w-full overflow-x-clip`}>
                     {
                         darkMode === undefined && (
                             <div className="fixed z-[99] flex flex-row w-full min-h-screen justify-center items-center bg-zinc-900">
@@ -270,25 +270,26 @@ export default function NavDrawer({
 
                     {/* Content and overlay */}
                     <div className={`${darkMode === undefined ? 'hidden' : ''} relative flex flex-col bg-zinc-200 dark:bg-zinc-600 w-screen`}>
-                        <div className={`
-                            
-                        `}>
+                        {/* <div className={`
+                            ${navOpen ? `${drawerLeft} left-[100vw]` : 'left-0'} 
+                            ${transition}
+                            absolute
+                            flex
+                        `}> */}
                             <MovingBackground />
                             <div className={`relative bg-transparent w-screen z-10`}>
-                                <div
+                                {/* <div
                                     className={`${navOpen ? 'opacity-100 z-10' : 'opacity-0 z-[-10]'} transition-[opacity] absolute top-0 right-0 bottom-0 left-0 bg-black/40 w-full`}
                                     onClick={() => setNavOpen(false)}
-                                />
+                                /> */}
                                 <div className="flex flex-col w-full" {...{ inert: navOpen ? 'true' as any : undefined }}>
-
                                     {children}
-
                                     <footer className="flex flex-row bg w-full p-4 bg-zinc-200 dark:bg-zinc-600 dm-text justify-center items-center">
                                         &copy;2024 Mitchell Hornsby
                                     </footer>
                                 </div>
                             </div>
-                        </div>
+                        {/* </div> */}
                     </div>
                 </div>
             </DarkModeContext.Provider >
