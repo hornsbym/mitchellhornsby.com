@@ -151,7 +151,7 @@ export default function NavDrawer({
                         </a>
                     </div>
                     {/* Navbar drawer */}
-                    <nav className={`
+                    {/* <nav className={`
                         ${width} 
                         w-screen
                         ${navOpen ? `left-0` : `${negativeDrawerLeft} left-[-100vw]`}
@@ -265,18 +265,14 @@ export default function NavDrawer({
                                 />
                             </ul>
                         </NavContext.Provider>
-                    </nav>-
+                    </nav>- */}
 
 
                     {/* Content and overlay */}
                     <div className={`${darkMode === undefined ? 'hidden' : ''} relative flex flex-col bg-zinc-200 dark:bg-zinc-600 w-screen`}>
                         <div className={`
-                        ${navOpen ? `${drawerLeft} left-[100vw]` : 'left-0'} 
-                        ${transition}
-                        absolute
-                        flex
-                        `}
-                        >
+                            
+                        `}>
                             <MovingBackground />
                             <div className={`relative bg-transparent w-screen z-10`}>
                                 <div
