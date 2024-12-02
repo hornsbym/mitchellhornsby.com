@@ -9,13 +9,19 @@ export async function POST(req: Request) {
     Project(id: ${projectId.toString()}) {
         title
         organization {
-            name
+          name
         }
         skills {
-            id
-            name
-            tagColor
-            tagFontColor
+          id
+          name
+          tagColor
+          tagFontColor
+        }
+        projectCategory {
+          id
+          name
+          tagColor
+          tagFontColor
         }
         startDate
         endDate

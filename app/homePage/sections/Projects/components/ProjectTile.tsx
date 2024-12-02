@@ -21,6 +21,12 @@ type Project = {
         tagColor: string
         tagFontColor: string
     }[]
+    projectCategory: {
+        id: string
+        name: string
+        tagColor: string
+        tagFontColor: string
+    }
     startDate: string
     endDate: string
     description_html: string
@@ -52,6 +58,21 @@ export default function ProjectTile({ id }: Props) {
                 ? (<RiLoader2Fill className="animate-spin text-[4rem] dark:text-white" />)
                 : (project && (
                     <div className={`flex flex-col w-full text-lg font-primary drop-shadow-dark max-w-[1024px]`}>
+                        {/* Project category */}
+                        <div className={`
+                            relative
+                            px-2
+                            sm:px-4
+                            z-[-1]
+                            flex
+                            flex-row
+                            justify-stretch
+                            sm:justify-start
+                            flex-wrap
+                            text-lg
+                            `}>
+                            <ProjectCategoryTag {...project.projectCategory} />
+                        </div>
                         <div className="       
                             relative                         
                             flex
@@ -111,7 +132,6 @@ export default function ProjectTile({ id }: Props) {
                                 </div>
                             </div>
                         </div>
-
                         {/* Project skills */}
                         <div className={`
                             relative
@@ -163,6 +183,36 @@ const SkillTag = ({ name, tagColor, tagFontColor, zIndex }: SkillProps) => {
         }}
     >
         <p className="flex flex-0 text-nowrap" style={{
+            color: `#${tagFontColor}`
+        }}>{name}</p>
+    </div>)
+}
+
+type ProjectCategoryProps = {
+    name: string
+    tagColor: string
+    tagFontColor: string
+}
+
+const ProjectCategoryTag = ({ name, tagColor, tagFontColor }: ProjectCategoryProps) => {
+    return (<div
+        className={`
+            relative
+            flex
+            flex-1
+            sm:flex-initial
+            flex-row
+            justify-center
+            px-4
+            py-1
+            rounded-t-2xl
+            font-bold
+        `}
+        style={{
+            backgroundColor: `#${tagColor}`,
+        }}
+    >
+        <p className="flex flex-0 text-nowrap underline" style={{
             color: `#${tagFontColor}`
         }}>{name}</p>
     </div>)

@@ -1,12 +1,24 @@
 export const revalidate = 60;
 
-export async function GET() {
+export async function POST(req: Request) {
+  const body = await req.json();
+  let { page, sortAscending, category } = body;
+
   const GET_PROJECTS = `
     {
-      Projects(limit: 50, sort: "-startDate") {
+      Projects(
+        limit: 3, 
+        sort: "${sortAscending  ? "startDate" : "-startDate"}", 
+        page: ${page}
+        ${category ? `, where: {projectCategory: {equals: ${category}}} `: ''}
+        ) {
         docs {
           id
         }
+        totalPages
+        hasNextPage
+        hasPrevPage
+        page
       }
     }
   `;
