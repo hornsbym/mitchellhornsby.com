@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode, useContext, useEffect, useRef, useState } from "react"
+import { ReactNode, useEffect, useRef, useState } from "react"
 import useIsVisible from "../../hooks/useIsVisible";
 
 // https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin
@@ -30,7 +30,6 @@ interface GroupVisibilityProps extends TriggerContainerProps {
 
 type ContainerClassNameOverrides = {
   container?: string
-
 }
 
 interface IndividualComponentClassNameOverrides extends ContainerClassNameOverrides {

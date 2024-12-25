@@ -10,11 +10,11 @@ export default function ProjectTileDescription({ content }: Props) {
     const [expanded, setIsExpanded] = useState(false)
 
     return (
-        <div className={`flex flex-col px-4 py-4 gap-4 items-center`}>
+        <div className={`flex flex-col px-4 py-4 gap-4 items-start`}>
             <div id="description_content" data-expanded={expanded} dangerouslySetInnerHTML={{ __html: content }} />
             <ExpandToggle label={expanded 
                 ? <span className="flex flex-row gap-2 items-center">Hide details <BsChevronBarContract/></span> 
-                : <span className="flex flex-row gap-2 items-center">Expand details <BsChevronBarExpand/></span>} 
+                : <span className="flex flex-row gap-2 items-center">Read more <BsChevronBarExpand/></span>} 
                 toggle={() => setIsExpanded(!expanded)} /> 
         </div>
     );
@@ -29,7 +29,7 @@ const ExpandToggle = ({
     toggle,
     label
 }: ExpandToggleProps) => {
-    return (<button className="text-yellow-500 font-bold underline p-2 w-fit" onClick={toggle}>
+    return (<button className="font-bold underline p-2 w-fit" onClick={toggle}>
         {label}
     </button>)
 }

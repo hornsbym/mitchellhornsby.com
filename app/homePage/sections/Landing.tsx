@@ -105,13 +105,13 @@ export default function Landing() {
                         "
                     >
                         <div className="flex flex-col gap-4">
-                            <p>{`I'm a full-stack software engineer that's particularly experienced in frontend development. I've professionally contributed to every aspect of both web app and cross-platform mobile app development, from the UI to the database. I've worked with both massive corporations and starups; I pride myself on being a flexible and tenacious problem solver.`}</p>
-                            <p>{`I've begun providing freelance web development services to small businesses through my web development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services.`}</p>
+                            <p>{`I'm a software engineer experienced in both front end and back end development. I've to both web and cross-platform mobile apps, across the stack `}&#8211;{` from the UI to the database. I've worked with both international corporations and scrappy starups; I pride myself on being a flexible and tenacious problem solver.`}</p>
+                            <p>{`I currently offer my expertise to small businesses through my web development studio, `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="https://novelconcept.studio">{`Novel Concept Studio`}</a>{`. Novel Concept Studio aims to provide small businesses with affordable web design, development, and hosting services. I love supporting local businesses, and this is one of the best ways I know how.`}</p>
+                            <p>{`When I find the time, I write about the intersection of small business and technology. If you're interested, you can `}<a href="https://novelconcept.studio/blogs" className="hover:no-underline underline dark:text-yellow-400 text-yellow-700">{`read the blogs I've written on Novel Concept's website.`}</a></p>
                             <p>{`Please reach out! I'm always eager to expand my network. You can DM me through LinkedIn, email me directly at `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="mailto:mitchellrh78@gmail.com">{`mitchellrh78@gmail.com`}</a>{`, or fill out the `}<a className="hover:no-underline underline dark:text-yellow-400 text-yellow-700" href="/#contact">contact form</a>{` at the bottom of this page.`}</p>
                         </div>
                     </div>
                 </div>
-
             </section>
         </SectionContainer>
 
