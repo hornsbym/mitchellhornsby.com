@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Quicksand } from "next/font/google";
-import "./globals.css";
-import NavContainer from "./components/layouts/NavDrawer/NavDrawer";
+import "../globals.css";
+import NavContainer from "../components/layouts/NavDrawer/NavDrawer";
 import Script from "next/script";
 
 const sora = Sora(

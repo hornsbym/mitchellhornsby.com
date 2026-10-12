@@ -49,9 +49,6 @@ export default function Landing() {
                     lg:gap-8
                     justify-center
                     items-center
-                    bg-white/60
-                    dark:bg-zinc-900/60
-                    rounded-lg
                 `}>
                     <div className="
                         flex

@@ -87,6 +87,8 @@ export default function NavContainer({
                     {/* Content and overlay */}
                     <div className={`${darkMode === undefined ? 'hidden' : ''} relative flex flex-col bg-zinc-200 dark:bg-zinc-600 w-screen`}>
                         <MovingBackground />
+                        {/* Translucent underlay over the whole screen, between the background and the content */}
+                        <div className="fixed top-0 right-0 bottom-0 left-0 bg-white/60 dark:bg-zinc-900/60" />
                         <div className={`relative bg-transparent w-screen z-10`}>
                             <div className="flex flex-col w-full">
                                 {children}

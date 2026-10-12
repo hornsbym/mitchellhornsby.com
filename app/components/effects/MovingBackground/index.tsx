@@ -1,4 +1,4 @@
-import TorusBg from "./backgrounds/Torus"
+import EmojiCoinsBg from "./backgrounds/EmojiCoins"
 
 type MovingBackgroundProps = {
     classNames?: ClassOverrides
@@ -17,7 +17,7 @@ export default function MovingBackground({
 }: MovingBackgroundProps) {
     return (
         <div className={`fixed top-0 right-0 bottom-0 left-0 ${classNames.container ?? ''} bg-white dark:bg-zinc-900`}>
-            <TorusBg />
+            <EmojiCoinsBg />
         </div>
     )
 }
