@@ -1,138 +1,68 @@
 'use client'
 import SectionContainer from "@/app/components/layouts/SectionContainer/SectionContainer";
 import ProjectTile from "./components/ProjectTile";
-import { useState, useEffect, ReactNode, useCallback } from "react";
-import { RiArrowLeftSLine, RiArrowRightSLine, RiLoader4Fill } from "react-icons/ri";
+import { useState, ReactNode, useMemo } from "react";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { ORGANIZATIONS, PROJECTS } from "./config";
 
-type ProjectsData = {
-    docs: [{ id: number }],
-    hasNextPage: boolean,
-    hasPrevPage: boolean,
-    page: number,
-    totalPages: number
-}
+const PAGE_SIZE = 3
 
-type ProjectCategory = {
-    id: number,
-    name: string
-}
+const FILTERS = [{ id: 'all', name: 'All' }, ...Object.values(ORGANIZATIONS)]
 
 export default function Projects() {
-    const [loading, setLoading] = useState(true)
-    const [projectsData, setProjectsData] = useState<ProjectsData | undefined>()
-    const [sortAscending, setSortAscending] = useState(false)
-    const [categories, setCategories] = useState<ProjectCategory[]>([{ id: -1, name: 'All' }])
-    const [activeCategoryIndex, setActiveCategoryIndex] = useState(0)
+    const [page, setPage] = useState(1)
+    const [activeFilterIndex, setActiveFilterIndex] = useState(0)
 
-    const jumpToPage = useCallback((pageNo: number) => {
-        fetch(
-            `${process.env.NEXT_PUBLIC_URL}/api/getProjects`,
-            {
-                method: 'POST',
-                body: JSON.stringify({
-                    page: pageNo,
-                    sortAscending: sortAscending,
-                    category: activeCategoryIndex > 0 ? categories[activeCategoryIndex].id : undefined
-                })
-            }
-        ).then(async (res) => {
-            const { data: { Projects } } = await res.json()
-            setProjectsData(Projects)
-            setLoading(false)
-        })
-    }, [sortAscending, activeCategoryIndex])
+    const filteredProjects = useMemo(() => {
+        const activeOrgId = activeFilterIndex > 0 ? FILTERS[activeFilterIndex].id : undefined
+        return PROJECTS
+            .filter((p) => !activeOrgId || p.organization.id === activeOrgId)
+            .sort((a, b) => b.startDate.localeCompare(a.startDate))
+    }, [activeFilterIndex])
 
-    useEffect(() => {
-        jumpToPage(1)
-        fetch(
-            `${process.env.NEXT_PUBLIC_URL}/api/getProjectCategories`,
-            {
-                method: 'POST',
-                body: JSON.stringify({})
-            }
-        ).then(async (res) => {
-            const { data: { ProjectCategories: { docs } } } = await res.json()
-            setCategories([...categories, ...docs])
-        })
-    }, [])
+    const pageCount = Math.max(1, Math.ceil(filteredProjects.length / PAGE_SIZE))
+    const pageProjects = filteredProjects.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
-    useEffect(() => {
-        if (projectsData) jumpToPage(projectsData.page)
-    }, [sortAscending])
-
-    useEffect(() => {
-        if (projectsData) jumpToPage(1)
-    }, [activeCategoryIndex])
+    const paginationProps: PaginationProps = {
+        page,
+        pageCount,
+        jumpToPage: setPage,
+        hasNextPage: page < pageCount,
+        hasPrevPage: page > 1
+    }
 
     return (
         <section id="projects" className="pt-32">
             <SectionContainer>
                 <div className="dm-text flex flex-1 flex-col items-center gap-16 w-full">
-                    <h2 className={`max-w-[66%] text-5xl font-header text-center`}><u>Explore</u> My Recent Projects</h2>
-                    {loading
-                        ? (<RiLoader4Fill className="animate-spin text-[6rem] dark:text-white" />)
-                        : (projectsData && (
-                            <div className="flex flex-col w-full items-center gap-8">
-                                {/* Filters */}
-                                <div
-                                    className={`flex flex-row flex-1 w-full justify-center text-xl font-primary gap-4`}
+                    <h2 className={`max-w-[66%] text-5xl font-header text-center`}><u>Explore</u> My Work Experience</h2>
+                    <div className="flex flex-col w-full items-center gap-8">
+                        {/* Filter by organization */}
+                        <div className="flex flex-row flex-wrap justify-center gap-2 text-xl font-primary">
+                            {FILTERS.map((f, i) => (
+                                <button
+                                    key={f.id}
+                                    onClick={() => {
+                                        setActiveFilterIndex(i)
+                                        setPage(1)
+                                    }}
+                                    className={`
+                                        px-4
+                                        py-2
+                                        rounded-full
+                                        border-2
+                                        border-black
+                                        dark:border-white
+                                        ${activeFilterIndex === i ? 'bg-black text-white dark:bg-white dark:text-black' : ''}
+                                    `}
                                 >
-                                    {/* Filter by project type */}
-                                    <div className="flex flex-row flex-wrap justify-center gap-2">
-                                        {categories.map((c, i) => (
-                                            <button
-                                                key={c.id}
-                                                onClick={() => { setActiveCategoryIndex(i) }}
-                                                className={`
-                                                    px-4
-                                                    py-2
-                                                    rounded-full
-                                                    border-2
-                                                    border-black
-                                                    dark:border-white
-                                                    ${activeCategoryIndex === i ? 'bg-black text-white dark:bg-white dark:text-black' : ''}
-                                                `}
-                                            >
-                                                {c.name}
-                                            </button>))}
-                                    </div>
-                                    {/* Sort by start date */}
-                                    {/* <button
-                                        onClick={() => {
-                                            setSortAscending(!sortAscending)
-                                        }}
-                                        className={`
-                                            rounded-full
-                                            bg-black
-                                            text-white
-                                            dark:bg-white
-                                            dark:text-black
-                                            px-4
-                                            py-2
-                                            h-fit
-                                    `}>
-                                        {sortAscending
-                                            ? <span className="flex flex-row gap-2 items-center">Oldest First <BsSortUp /></span>
-                                            : <span className="flex flex-row gap-2 items-center">Newest First <BsSortDown /></span>}
-                                    </button> */}
-                                </div>
-                                <Pagination
-                                    page={projectsData.page}
-                                    pageCount={projectsData.totalPages}
-                                    jumpToPage={jumpToPage}
-                                    hasNextPage={projectsData.hasNextPage}
-                                    hasPrevPage={projectsData.hasPrevPage}
-                                />
-                                {projectsData.docs.map((proj, i) => <ProjectTile key={`${proj.id}-${i}`} {...proj} />)}
-                                <Pagination
-                                    page={projectsData.page}
-                                    pageCount={projectsData.totalPages}
-                                    jumpToPage={jumpToPage}
-                                    hasNextPage={projectsData.hasNextPage}
-                                    hasPrevPage={projectsData.hasPrevPage}
-                                />
-                            </div>
-                        ))}
+                                    {f.name}
+                                </button>))}
+                        </div>
+                        <Pagination {...paginationProps} />
+                        {pageProjects.map((proj) => <ProjectTile key={proj.id} project={proj} />)}
+                        <Pagination {...paginationProps} />
+                    </div>
                 </div>
             </SectionContainer>
         </section>
