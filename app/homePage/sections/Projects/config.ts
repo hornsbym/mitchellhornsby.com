@@ -59,6 +59,7 @@ const SKILLS = {
     storybook: skill('storybook', 'Storybook', 'ff4785', 'ffffff'),
     reactHookForm: skill('react-hook-form', 'React Hook Form', 'ec5990', 'ffffff'),
     githubActions: skill('github-actions', 'GitHub Actions', '2088ff', 'ffffff'),
+    aiDev: skill('ai-dev', 'AI-Assisted Development', '7c3aed', 'ffffff'),
     claudeCode: skill('claude-code', 'Claude Code', 'd97757', 'ffffff'),
     netlify: skill('netlify', 'Netlify', '32e6e2', '0e1e25'),
     playwright: skill('playwright', 'Playwright', '2ead33', 'ffffff'),
@@ -75,18 +76,20 @@ export const PROJECTS: Project[] = [
         title: 'Appointment Confirmation',
         organization: ORGANIZATIONS.rula,
         projectCategory: CATEGORIES.fullStack,
-        skills: [SKILLS.technicalDesign, SKILLS.typescript, SKILLS.react, SKILLS.node, SKILLS.dynamodb, SKILLS.launchdarkly],
+        skills: [SKILLS.aiDev, SKILLS.technicalDesign, SKILLS.typescript, SKILLS.react, SKILLS.node, SKILLS.dynamodb, SKILLS.launchdarkly],
         startDate: '2026-07-01',
         description_html: `
-            <p>Added a confirm-or-cancel step to Rula's appointment reminder emails and texts, so patients can tell us whether they're going 48 and 24 hours before a session. The goal was to cut no-shows among partner-referred patients. I was the sole developer and wrote the technical design myself, both firsts for me.</p>
+            <p>Added a confirm-or-cancel step to Rula's appointment reminder emails and texts, so patients can tell us whether they're going 48 and 24 hours before a session. The goal was to cut no-shows among partner-referred patients. I was the sole developer and wrote the technical design myself, both firsts for me. AI tools were central to how I worked across planning, review, and implementation.</p>
             <p><strong>Design &amp; planning</strong></p>
             <ul>
                 <li>Wrote the technical design document. I ran an architecture spike on where confirmation status should live and moved away from the lifecycle-messaging vendor to a webhook-based design that keeps Rula's own services as the source of truth</li>
                 <li>Defended the choice of service in writing and answered a security review covering signed, expiring confirmation links, PHI minimization, authenticated route splitting, rate limiting, and webhook trust</li>
-                <li>Produced a milestone-by-milestone timeline estimate that my manager used for leadership reporting</li>
+                <li>Used AI to produce a milestone-by-milestone timeline estimate, which my manager added to the initiative and used for leadership reporting</li>
+                <li>Used AI to work through the security review's six concerns one by one. The security team accepted every response without asking for revisions</li>
             </ul>
             <p><strong>Implementation (three codebases, two of them new to me)</strong></p>
             <ul>
+                <li>Used AI pair programming to ramp up on unfamiliar codebases in hours instead of days. I merged my first patient workflow service PR within 48 hours of opening the repo, and eight PRs across two new repos within two weeks</li>
                 <li><em>Patient workflow service:</em> confirmation entity, store, service layer, and a public, rate-limited confirmation endpoint backed by DynamoDB</li>
                 <li><em>Telehealth app:</em> a feature-flagged confirmation page with appointment details and pre-appointment tasks</li>
                 <li><em>Shared component library:</em> a new wordmark component and brand color support</li>
@@ -95,7 +98,7 @@ export const PROJECTS: Project[] = [
             <ul>
                 <li>Rolled the LaunchDarkly experiment out to production, ramping from a small holdout to an even three-way split</li>
                 <li>Resolved a production incident where the page created survey records on load instead of on click, which was skewing metrics</li>
-                <li>Shipped the fast-follow milestones and a QA pass, then turned our retro into a cross-functional collaboration guide that the team now uses</li>
+                <li>Shipped the fast-follow milestones and a QA pass, then turned our retro into a cross-functional collaboration guide that the team now uses, and proposed packaging it as a Claude skill so it feeds directly into the team's AI-assisted workflows</li>
             </ul>
         `,
     },
@@ -104,7 +107,7 @@ export const PROJECTS: Project[] = [
         title: 'Medicaid Partner Referral Routing',
         organization: ORGANIZATIONS.rula,
         projectCategory: CATEGORIES.fullStack,
-        skills: [SKILLS.typescript, SKILLS.react, SKILLS.nextjs, SKILLS.storybook],
+        skills: [SKILLS.aiDev, SKILLS.typescript, SKILLS.react, SKILLS.nextjs, SKILLS.storybook],
         startDate: '2026-09-01',
         description_html: `
             <p>Some patients referred through Rula's Direct Booking Tool are Medicaid members who need to schedule with an outside partner instead of booking with Rula. This project detects those patients and routes them to clear next steps instead of dead-ending their booking.</p>
@@ -258,13 +261,13 @@ export const PROJECTS: Project[] = [
         title: 'Internal Docs & AI Tooling',
         organization: ORGANIZATIONS.rula,
         projectCategory: CATEGORIES.devEx,
-        skills: [SKILLS.typescript, SKILLS.githubActions, SKILLS.claudeCode, SKILLS.react],
+        skills: [SKILLS.aiDev, SKILLS.claudeCode, SKILLS.typescript, SKILLS.githubActions, SKILLS.react],
         startDate: '2026-06-01',
         description_html: `
-            <p>Side projects that make my team faster, mostly about keeping technical design docs easy to write, review, and find.</p>
+            <p>Side projects that make my team faster, mostly about keeping technical design docs easy to write, review, and find, and about making our docs work well with AI-assisted workflows. I built both tools with heavy AI assistance.</p>
             <ul>
-                <li><strong>Design doc sync:</strong> a GitHub Actions pipeline that publishes design docs from a repository to Confluence on merge. It pulls metadata from frontmatter and keeps inline comment threads. The team now uses it to publish design docs, including docs written by other engineers</li>
-                <li><strong>md-with-comments:</strong> a review tool for Markdown with inline, anchored comments that are written back into the file. That way an LLM (or the next person) sees exactly which feedback applies to which text. It ships as a core library, desktop app, CLI, and VS Code extension, with a unit-tested anchoring format designed to survive AI-made edits</li>
+                <li><strong>Design doc sync:</strong> a GitHub Actions pipeline that publishes design docs from a repository to Confluence on merge. It pulls metadata from frontmatter and keeps inline comment threads. AI tools let me iterate quickly on the Confluence API integration and the Markdown-to-Confluence conversion. The team now uses it to publish design docs, including docs written by other engineers</li>
+                <li><strong>md-with-comments:</strong> a review tool for Markdown with inline, anchored comments that are written back into the file. That way an LLM (or the next person) sees exactly which feedback applies to which text. It ships as a core library, desktop app, CLI, and VS Code extension, with a unit-tested anchoring format designed to survive AI-made edits. I used Claude Code throughout and had it generate two of the four PRs directly</li>
                 <li><strong>Team docs:</strong> guides on debugging mobile-only web issues (presented live to the growth team), managing GitHub notifications, and the team's Linear-to-Jira migration</li>
             </ul>
         `,
